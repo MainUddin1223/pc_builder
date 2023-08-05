@@ -9,13 +9,35 @@ interface IDetailProps{
 
 const ProductDetails = ({ details }: IDetailProps) => {
     console.log(details)
+    const features = Object.entries(details.keyFeatures);
     return (
         <div className={styles.product_details_container}>
             <div>
                 <Image src={details?.image} alt="product_img" width={300} height={300} layout="responsive"/>
             </div>
             <div>
-                <p>{details?.productName }</p>
+                <p>{details?.productName}</p>
+                <p>Category: { details.category}</p>
+                <p>Status: { details.status}</p>
+                <p>Price: { details.price}</p>
+                <p>Description: {details.description}</p>
+                <p>Key Featurs:
+                {features.map(([key, value]) => (
+                <p key={key}>
+                <strong>{key}: </strong>
+                {value}
+                </p>
+                 ))}
+                </p>
+                <p>Indiviudal Rating: { details.individualRating}</p>
+                <p>Average Rating: {details.averageRating}</p>
+                <p>Reviews : </p>
+                {
+                    details.reviews.map((review,index) => (
+                        <p key={index}>{ review}</p>
+                    ))
+                }
+                <button>Add to builder</button>
             </div>
 
         </div>
