@@ -1,0 +1,431 @@
+[
+  {
+    "image": "/images/intel-i7.jpg",
+    "productName": "intel i7",
+    "category": "processor",
+    "status": "In Stock",
+    "price": 499.99,
+    "description": "This is an example product description.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum...",
+      "Port": "USB, HDMI",
+      "type": "Example type",
+      "Resolution": "1920x1080",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.5,
+    "averageRating": 4.2,
+    "reviews": ["very good product", "Recommanded"]
+  },
+  {
+    "image": "/images/intel-i9.jpg",
+    "productName": "intel i9",
+    "category": "processor",
+    "status": "In Stock",
+    "price": 500,
+    "description": "This is an example product description.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum...",
+      "Port": "USB, HDMI",
+      "type": "Example type",
+      "Resolution": "1920x1080",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.5,
+    "averageRating": 4.6,
+    "reviews": ["very good product", "Recommanded"]
+  },
+  {
+    "image": "/images/intel-i5.jpg",
+    "productName": "intel i5",
+    "category": "processor",
+    "status": "In Stock",
+    "price": 400,
+    "description": "This is an example product description.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum...",
+      "Port": "USB, HDMI",
+      "type": "Example type",
+      "Resolution": "1920x1080",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.6,
+    "averageRating": 4.1,
+    "reviews": ["very good product", "Recommanded"]
+  },
+  {
+    "image": "/images/mobo-1.jpg",
+    "productName": "Intel i5 Motherboard",
+    "category": "motherboard",
+    "status": "In Stock",
+    "price": 400,
+    "description": "This is a high-performance motherboard designed for Intel Core i5 processors.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Port": "USB 3.0, HDMI, Ethernet",
+      "type": "ATX",
+      "Resolution": "N/A",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.6,
+    "averageRating": 4.1,
+    "reviews": [
+      "Very good product, easy to install and works flawlessly.",
+      "Highly recommended for anyone building a gaming PC."
+    ]
+  },
+  {
+    "image": "/images/mobo-2.jpg",
+    "productName": "Intel i5 Motherboard 2",
+    "category": "motherboard",
+    "status": "In Stock",
+    "price": 400,
+    "description": "This is a high-performance motherboard designed for Intel Core i5 processors.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Port": "USB 3.0, HDMI, Ethernet",
+      "type": "ATX",
+      "Resolution": "N/A",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.6,
+    "averageRating": 4.1,
+    "reviews": [
+      "Very good product, easy to install and works flawlessly.",
+      "Highly recommended for anyone building a gaming PC."
+    ]
+  },
+  {
+    "image": "/images/mobo-3.jpg",
+    "productName": "Intel i5 Motherboard-3",
+    "category": "motherboard",
+    "status": "In Stock",
+    "price": 400,
+    "description": "This is a high-performance motherboard designed for Intel Core i5 processors.",
+    "keyFeatures": {
+      "brand": "Intel",
+      "model": "ABC123",
+      "specification": "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+      "Port": "USB 3.0, HDMI, Ethernet",
+      "type": "ATX",
+      "Resolution": "N/A",
+      "Voltage": "110-240V"
+    },
+    "individualRating": 4.6,
+    "averageRating": 4.1,
+    "reviews": [
+      "Very good product, easy to install and works flawlessly.",
+      "Highly recommended for anyone building a gaming PC."
+    ]
+  },
+  {
+    "image": "/images/power-1.jpg",
+    "productName": "High-Performance Power Supply-1",
+    "category": "powerSupply",
+    "status": "In Stock",
+    "price": 120,
+    "description": "This power supply unit delivers reliable and efficient power to your PC components.",
+    "keyFeatures": {
+      "brand": "Example Power Co.",
+      "model": "PSU-123",
+      "specification": "ATX 12V v2.4, 650W",
+      "type": "Fully Modular",
+      "efficiencyRating": "80 Plus Gold",
+      "inputVoltage": "100-240V",
+      "cooling": "140mm Fan",
+      "protections": "Over Voltage, Over Power, Short Circuit"
+    },
+    "individualRating": 4.8,
+    "averageRating": 4.6,
+    "reviews": [
+      "Extremely quiet and reliable power supply.",
+      "The modular design makes cable management a breeze.",
+      "Very satisfied with the performance and build quality."
+    ]
+  },
+  {
+    "image": "/images/power-2.jpg",
+    "productName": "High-Performance Power Supply-2",
+    "category": "powerSupply",
+    "status": "In Stock",
+    "price": 120,
+    "description": "This power supply unit delivers reliable and efficient power to your PC components.",
+    "keyFeatures": {
+      "brand": "Example Power Co.",
+      "model": "PSU-123",
+      "specification": "ATX 12V v2.4, 650W",
+      "type": "Fully Modular",
+      "efficiencyRating": "80 Plus Gold",
+      "inputVoltage": "100-240V",
+      "cooling": "140mm Fan",
+      "protections": "Over Voltage, Over Power, Short Circuit"
+    },
+    "individualRating": 4.8,
+    "averageRating": 4.6,
+    "reviews": [
+      "Extremely quiet and reliable power supply.",
+      "The modular design makes cable management a breeze.",
+      "Very satisfied with the performance and build quality."
+    ]
+  },
+  {
+    "image": "/images/power-3.jpg",
+    "productName": "High-Performance Power Supply-3",
+    "category": "powerSupply",
+    "status": "In Stock",
+    "price": 120,
+    "description": "This power supply unit delivers reliable and efficient power to your PC components.",
+    "keyFeatures": {
+      "brand": "Example Power Co.",
+      "model": "PSU-123",
+      "specification": "ATX 12V v2.4, 650W",
+      "type": "Fully Modular",
+      "efficiencyRating": "80 Plus Gold",
+      "inputVoltage": "100-240V",
+      "cooling": "140mm Fan",
+      "protections": "Over Voltage, Over Power, Short Circuit"
+    },
+    "individualRating": 4.8,
+    "averageRating": 4.6,
+    "reviews": [
+      "Extremely quiet and reliable power supply.",
+      "The modular design makes cable management a breeze.",
+      "Very satisfied with the performance and build quality."
+    ]
+  },
+  {
+    "image": "/images/ram-1.jpg",
+    "productName": "High-Speed DDR4 RAM-1",
+    "category": "ram",
+    "status": "In Stock",
+    "price": 80,
+    "description": "Boost your PC's performance with this high-speed DDR4 RAM module.",
+    "keyFeatures": {
+      "brand": "SpeedyRAM",
+      "model": "SRAM-DDR4-8GB",
+      "Capacity": "8GB",
+      "Speed": "3200MHz",
+      "type": "DDR4",
+      "CASLatency": "CL16",
+      "Voltage": "1.35V",
+      "FormFactor": "DIMM"
+    },
+    "individualRating": 4.7,
+    "averageRating": 4.4,
+    "reviews": [
+      "Fast and reliable RAM, perfect for gaming and multitasking.",
+      "Easy installation and immediate improvement in system performance.",
+      "Highly recommended for anyone looking to upgrade their RAM."
+    ]
+  },
+  {
+    "image": "/images/ram-2.jpg",
+    "productName": "High-Speed DDR4 RAM-2",
+    "category": "ram",
+    "status": "In Stock",
+    "price": 80,
+    "description": "Boost your PC's performance with this high-speed DDR4 RAM module.",
+    "keyFeatures": {
+      "brand": "SpeedyRAM",
+      "model": "SRAM-DDR4-8GB",
+      "Capacity": "8GB",
+      "Speed": "3200MHz",
+      "type": "DDR4",
+      "CASLatency": "CL16",
+      "Voltage": "1.35V",
+      "FormFactor": "DIMM"
+    },
+    "individualRating": 4.7,
+    "averageRating": 4.4,
+    "reviews": [
+      "Fast and reliable RAM, perfect for gaming and multitasking.",
+      "Easy installation and immediate improvement in system performance.",
+      "Highly recommended for anyone looking to upgrade their RAM."
+    ]
+  },
+  {
+    "image": "/images/ram-3.jpg",
+    "productName": "High-Speed DDR4 RAM-3",
+    "category": "ram",
+    "status": "In Stock",
+    "price": 80,
+    "description": "Boost your PC's performance with this high-speed DDR4 RAM module.",
+    "keyFeatures": {
+      "brand": "SpeedyRAM",
+      "model": "SRAM-DDR4-8GB",
+      "Capacity": "8GB",
+      "Speed": "3200MHz",
+      "type": "DDR4",
+      "CASLatency": "CL16",
+      "Voltage": "1.35V",
+      "FormFactor": "DIMM"
+    },
+    "individualRating": 4.7,
+    "averageRating": 4.4,
+    "reviews": [
+      "Fast and reliable RAM, perfect for gaming and multitasking.",
+      "Easy installation and immediate improvement in system performance.",
+      "Highly recommended for anyone looking to upgrade their RAM."
+    ]
+  },
+  {
+    "image": "/images/ssd-1.jpg",
+    "productName": "High-Performance SSD-1",
+    "category": "ssd",
+    "status": "In Stock",
+    "price": 150,
+    "description": "Experience lightning-fast data access with this high-performance SSD.",
+    "keyFeatures": {
+      "brand": "SpeedySSD",
+      "model": "SSD-500GB",
+      "Capacity": "500GB",
+      "intelface": "NVMe PCIe 3.0 x4",
+      "ReadSpeed": "3500 MB/s",
+      "WriteSpeed": "2500 MB/s",
+      "FormFactor": "M.2 2280"
+    },
+    "individualRating": 4.9,
+    "averageRating": 4.7,
+    "reviews": [
+      "Super-fast SSD, significantly improved boot times and application loading.",
+      "Installation was a breeze, and the performance boost is amazing.",
+      "Highly recommended for anyone looking to upgrade to an SSD."
+    ]
+  },
+  {
+    "image": "/images/ssd-2.jpg",
+    "productName": "High-Performance SSD-2",
+    "category": "ssd",
+    "status": "In Stock",
+    "price": 150,
+    "description": "Experience lightning-fast data access with this high-performance SSD.",
+    "keyFeatures": {
+      "brand": "SpeedySSD",
+      "model": "SSD-500GB",
+      "Capacity": "500GB",
+      "intelface": "NVMe PCIe 3.0 x4",
+      "ReadSpeed": "3500 MB/s",
+      "WriteSpeed": "2500 MB/s",
+      "FormFactor": "M.2 2280"
+    },
+    "individualRating": 4.9,
+    "averageRating": 4.7,
+    "reviews": [
+      "Super-fast SSD, significantly improved boot times and application loading.",
+      "Installation was a breeze, and the performance boost is amazing.",
+      "Highly recommended for anyone looking to upgrade to an SSD."
+    ]
+  },
+  {
+    "image": "/images/ssd-3.jpg",
+    "productName": "High-Performance SSD-3",
+    "category": "ssd",
+    "status": "In Stock",
+    "price": 150,
+    "description": "Experience lightning-fast data access with this high-performance SSD.",
+    "keyFeatures": {
+      "brand": "SpeedySSD",
+      "model": "SSD-500GB",
+      "Capacity": "500GB",
+      "intelface": "NVMe PCIe 3.0 x4",
+      "ReadSpeed": "3500 MB/s",
+      "WriteSpeed": "2500 MB/s",
+      "FormFactor": "M.2 2280"
+    },
+    "individualRating": 4.9,
+    "averageRating": 4.7,
+    "reviews": [
+      "Super-fast SSD, significantly improved boot times and application loading.",
+      "Installation was a breeze, and the performance boost is amazing.",
+      "Highly recommended for anyone looking to upgrade to an SSD."
+    ]
+  },
+  {
+    "image": "/images/mouse-1.jpg",
+    "productName": "High-Performance Gaming Mouse-1",
+    "category": "others",
+    "status": "In Stock",
+    "price": 60,
+    "description": "Dominate your gaming sessions with this high-performance gaming mouse.",
+    "keyFeatures": {
+      "brand": "SpeedyMouse",
+      "model": "SM-GM01",
+      "DPI": "16000",
+      "Connection": "Wired (USB)",
+      "Buttons": "8 Programmable Buttons",
+      "Sensortype": "Optical",
+      "PollingRate": "1000Hz",
+      "RGBLighting": true,
+      "Weight": "85g (Adjustable)"
+    },
+    "individualRating": 4.7,
+    "averageRating": 4.5,
+    "reviews": [
+      "Excellent gaming mouse with precise tracking and smooth gliding.",
+      "Customizable buttons and RGB lighting add a nice touch.",
+      "Definitely worth the investment for serious gamers."
+    ]
+  },
+  {
+    "image": "/images/mouse-1.jpg",
+    "productName": "High-Performance Gaming Mouse-2",
+    "category": "others",
+    "status": "In Stock",
+    "price": 60,
+    "description": "Dominate your gaming sessions with this high-performance gaming mouse.",
+    "keyFeatures": {
+      "brand": "SpeedyMouse",
+      "model": "SM-GM01",
+      "DPI": "16000",
+      "Connection": "Wired (USB)",
+      "Buttons": "8 Programmable Buttons",
+      "Sensortype": "Optical",
+      "PollingRate": "1000Hz",
+      "RGBLighting": true,
+      "Weight": "85g (Adjustable)"
+    },
+    "individualRating": 4.7,
+    "averageRating": 4.5,
+    "reviews": [
+      "Excellent gaming mouse with precise tracking and smooth gliding.",
+      "Customizable buttons and RGB lighting add a nice touch.",
+      "Definitely worth the investment for serious gamers."
+    ]
+  },
+  {
+    "image": "/images/keyboard-1.jpg",
+    "productName": "Mechanical Gaming Keyboard",
+    "category": "others",
+    "status": "In Stock",
+    "price": 100,
+    "description": "Enhance your gaming experience with this mechanical gaming keyboard.",
+    "keyFeatures": {
+      "brand": "SpeedyKeyboard",
+      "model": "SK-MK01",
+      "KeySwitches": "Cherry MX Red",
+      "Backlighting": "RGB",
+      "AntiGhosting": true,
+      "MediaKeys": true,
+      "Connection": "Wired (USB)",
+      "Cabletype": "Braided",
+      "Layout": "Full-size"
+    },
+    "individualRating": 4.8,
+    "averageRating": 4.6,
+    "reviews": [
+      "High-quality mechanical keyboard with satisfying key switches.",
+      "The RGB backlighting looks stunning and is customizable.",
+      "Perfect for both gaming and typing tasks."
+    ]
+  }
+]

@@ -1,0 +1,18 @@
+.category_container {
+  /* background-color: black; */
+}
+.component_container {
+  display: flex;
+  justify-content: center;
+}
+.category_header_container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  font-size: 30px;
+  font-weight: bold;
+  padding: 20px;
+}
+.category_header_container p {
+  text-transform: uppercase;
+}

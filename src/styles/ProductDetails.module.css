@@ -1,0 +1,7 @@
+.product_details_container {
+  display: flex;
+  background-color: black;
+  width: 80%;
+  margin: 10px auto;
+  color: white;
+}
