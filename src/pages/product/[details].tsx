@@ -1,19 +1,23 @@
 import RootLayout from "@/components/Layout/RootLayout";
+import { addToBuilder } from "@/redux/features/pcBuilderSlice";
+import { useAppDispatch } from "@/redux/hooks";
 import styles from '@/styles/ProductDetails.module.css';
 import { Details } from "@/types/types";
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
+import { useRouter } from "next/router";
 interface IDetailProps{
     details:Details
 }
 
 const ProductDetails = ({ details }: IDetailProps) => {
-    console.log(details)
-    const features = Object.entries(details.keyFeatures);
+  const features = Object.entries(details.keyFeatures);
+  const dispatch = useAppDispatch()
+  const router = useRouter()
     return (
         <div className={styles.product_details_container}>
-            <div>
-                <Image src={details?.image} alt="product_img" width={300} height={300} layout="responsive"/>
+            <div className={styles.details_img_container}>
+                <Image className={styles.details_img} src={details?.image} alt="product_img" width={300} height={300} layout="responsive"/>
             </div>
             <div>
                 <p>{details?.productName}</p>
@@ -37,7 +41,10 @@ const ProductDetails = ({ details }: IDetailProps) => {
                         <p key={index}>{ review}</p>
                     ))
                 }
-                <button>Add to builder</button>
+          <button className={styles.add_to_build_button} onClick={() => {
+            dispatch(addToBuilder(details))
+            router.push('/pc_builder')
+                }}>Add to builder</button>
             </div>
 
         </div>

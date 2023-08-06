@@ -1,0 +1,78 @@
+.categories_conatiner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  padding: 10px;
+  background-color: rgb(69, 66, 66);
+}
+
+.category_container {
+  padding: 10px;
+  background-color: rgb(83, 79, 79);
+  color: white;
+  min-width: 150px;
+  text-align: center;
+}
+.category_container:hover {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+.category_button {
+  padding: 5px 10px;
+  color: white;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.category_button:hover {
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
+}
+.empty_builder {
+  position: absolute;
+  top: 60%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.builder_card_container {
+  background-color: gray;
+  padding: 15px;
+}
+.builder_card {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+.complete_button {
+  padding: 8px 15px;
+  background-color: black;
+  cursor: pointer;
+  margin: 0 auto;
+  display: block;
+  color: white;
+  font-weight: bold;
+}
+.complete_button_disabled {
+  background-color: rgb(113, 109, 109);
+  cursor: default;
+}
+@media (min-width: 576px) and (max-width: 768px) {
+  .builder_card {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* Styles for Medium devices */
+@media (min-width: 768px) and (max-width: 992px) {
+  .builder_card {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+@media (max-width: 576px) {
+  .category_container {
+    width: 100%;
+  }
+  .builder_card {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}

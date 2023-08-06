@@ -1,7 +1,21 @@
 .product_details_container {
-  display: flex;
   background-color: black;
   width: 80%;
   margin: 10px auto;
   color: white;
+  padding: 10px;
+}
+.details_img {
+  min-width: 250px;
+  max-width: 500px;
+  display: block;
+  margin: 0 auto;
+}
+.add_to_build_button {
+  padding: 10px;
+  color: white;
+  font-weight: bolder;
+  display: block;
+  margin: 20px auto;
+  cursor: pointer;
 }

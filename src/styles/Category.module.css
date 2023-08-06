@@ -4,6 +4,7 @@
 .component_container {
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
 }
 .category_header_container {
   display: flex;

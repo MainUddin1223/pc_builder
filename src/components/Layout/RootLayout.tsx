@@ -1,3 +1,4 @@
+import { useAppSelector } from '@/redux/hooks';
 import styles from '@/styles/RootLayout.module.css';
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -8,6 +9,7 @@ interface Props{
 }
 
 const RootLayout = ({ children }: Props) => {
+  const {count} = useAppSelector(state=>state.component)
   const [hideNav, setHideNav] = useState(true)
   const router = useRouter()
   return (
@@ -42,8 +44,10 @@ const RootLayout = ({ children }: Props) => {
                     <li>others</li>
                     </Link>
                 </ul>
-            </div>
-            <li>Build pc</li>
+              </div>
+               <Link href='/pc_builder'>
+                <li>PC Builder <span className={styles.quantity} style={{color:"red",fontWeight:"bolder",marginTop:'-10px'}}>{ count>0 && count}</span></li>
+                    </Link>
               <li>Login</li>
             </ul>
         </div>

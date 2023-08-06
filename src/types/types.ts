@@ -1,5 +1,7 @@
 export interface Details {
-  map(arg0: (component: Details) => import("react").JSX.Element): import("react").ReactNode;
+  map(
+    arg0: (component: Details) => import("react").JSX.Element
+  ): import("react").ReactNode;
   _id: string;
   image: string;
   productName: string;
@@ -19,6 +21,7 @@ export interface Details {
   individualRating: number;
   averageRating: number;
   reviews: string[];
+  quantity?:number
 }
 export interface PcComponent{
     component:Details
