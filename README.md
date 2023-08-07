@@ -12,4 +12,4 @@ PC Builder is a web application built using Next.js, Redux, and TypeScript that 
 
 ## Demo
 
-Check out the live demo of the PC Builder application: [Live Demo](https://www.example.com)
+## Check out the live demo of the PC Builder application: [Live Demo](https://pc-builder-chi-virid.vercel.app/)
