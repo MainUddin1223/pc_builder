@@ -1,9 +1,3 @@
-import banner from '@/assets/banner.jpg';
-import Hero from '@/components/Hero';
-import HomeFeatured from '@/components/HomeFeatured';
-import RootLayout from '@/components/Layout/RootLayout';
-import styles from '@/styles/Home.module.css';
-import { Details, PcComponents } from '@/types/types';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -12,10 +6,16 @@ import { BsDeviceSsdFill, BsMotherboardFill } from 'react-icons/bs';
 import { CgSmartphoneRam } from 'react-icons/cg';
 import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
 import { MdDevicesOther, MdMonitor } from 'react-icons/md';
-;
-const inter = Inter({ subsets: ['latin'] });
-const rootUrl = process.env.NEXTAUTH_URL
+import banner from '../assets/banner.jpg';
+import Hero from '../components/Hero';
+import HomeFeatured from '../components/HomeFeatured';
+import RootLayout from '../components/Layout/RootLayout';
+import styles from '../styles/Home.module.css';
+import { Details, PcComponents } from '../types/types';
 
+const inter = Inter({ subsets: ['latin'] });
+
+const rootUrl = process.env.NEXTAUTH_URL
 const Home = ({ components }: PcComponents) => {
   return (
     <>
@@ -89,7 +89,6 @@ const Home = ({ components }: PcComponents) => {
   );
 };
 
-// Define the getLayout function for this page
 Home.getLayout = function getLayout(page: React.ReactNode) {
   return <RootLayout>{page}</RootLayout>;
 };
@@ -101,7 +100,7 @@ export const getStaticProps = async () => {
     props: {
       components: data.data,
     },
-    revalidate: 10,
+    revalidate: 30,
   };
 };
 

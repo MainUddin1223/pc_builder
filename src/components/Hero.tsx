@@ -1,9 +1,9 @@
-import banner_2 from '@/assets/Banner-2.jpg';
-import banner_1 from '@/assets/Banner-6.jpg';
-import banner_3 from '@/assets/Workstation_PC_Banner.jpg';
-import styles from '@/styles/Hero.module.css';
 import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import banner_2 from '../assets/Banner-2.jpg';
+import banner_1 from '../assets/Banner-6.jpg';
+import banner_3 from '../assets/Workstation_PC_Banner.jpg';
+import styles from '../styles/Hero.module.css';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';

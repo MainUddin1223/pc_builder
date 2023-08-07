@@ -1,18 +1,15 @@
-import RootLayout from "@/components/Layout/RootLayout";
-import { addToBuilder } from "@/redux/features/pcBuilderSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import styles from '@/styles/ProductDetails.module.css';
-import { Details } from "@/types/types";
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import RootLayout from "../../components/Layout/RootLayout";
+import { addToBuilder } from "../../redux/features/pcBuilderSlice";
+import { useAppDispatch } from "../../redux/hooks";
+import styles from '../../styles/ProductDetails.module.css';
+import { Details, IDetailProps } from "../../types/types";
 const rootUrl = process.env.NEXTAUTH_URL
-interface IDetailProps{
-    details:Details
-}
+
 
 const ProductDetails = ({ details }: IDetailProps) => {
-  const features = Object.entries(details.keyFeatures);
   const dispatch = useAppDispatch()
   const router = useRouter()
     return (
@@ -22,23 +19,23 @@ const ProductDetails = ({ details }: IDetailProps) => {
             </div>
             <div>
                 <p>{details?.productName}</p>
-                <p>Category: { details.category}</p>
-                <p>Status: { details.status}</p>
-                <p>Price: { details.price}</p>
-                <p>Description: {details.description}</p>
+                <p>Category: { details?.category}</p>
+                <p>Status: { details?.status}</p>
+                <p>Price: { details?.price}</p>
+                <p>Description: {details?.description}</p>
                 <p>Key Featurs:
-                {features.map(([key, value]) => (
+                {details?.keyFeatures && Object.entries(details?.keyFeatures)?.map(([key, value]) => (
                 <p key={key}>
                 <strong>{key}: </strong>
                 {value}
                 </p>
                  ))}
                 </p>
-                <p>Indiviudal Rating: { details.individualRating}</p>
-                <p>Average Rating: {details.averageRating}</p>
+                <p>Indiviudal Rating: { details?.individualRating}</p>
+                <p>Average Rating: {details?.averageRating}</p>
                 <p>Reviews : </p>
                 {
-                    details.reviews.map((review,index) => (
+                    details?.reviews && details?.reviews.map((review,index) => (
                         <p key={index}>{ review}</p>
                     ))
                 }
@@ -56,6 +53,7 @@ ProductDetails.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticPaths = async () => {
+
   const res = await fetch(`${rootUrl}/api/products`);
   const data = await res.json();
   const products = data.data;
@@ -70,7 +68,7 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context:GetStaticPropsContext) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
     const details = context.params?.details;
     const url = `${rootUrl}/api/product/${details}`
     const res = await fetch(url);

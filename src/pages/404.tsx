@@ -1,9 +1,9 @@
-import ErrorImg from "@/assets/404.jpg";
 import { Button } from "antd";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
+import ErrorImg from "../assets/404.jpg";
 const NotFoundPage = () => {
 
     const router = useRouter();

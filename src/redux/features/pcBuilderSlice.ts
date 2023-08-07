@@ -1,11 +1,8 @@
-import { Details } from "@/types/types";
 import { createSlice } from "@reduxjs/toolkit";
+import { IComponent } from "../../types/types";
 
 
-interface IComponent {
-    component: Details[];
-    count:number
-}
+
 
 const initialState: IComponent = {
     component: [],

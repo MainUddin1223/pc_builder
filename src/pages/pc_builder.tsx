@@ -1,20 +1,16 @@
-import RootLayout from "@/components/Layout/RootLayout"
-import PcComponentCard from "@/components/pcCopmonent"
-import { resetComponent } from "@/redux/features/pcBuilderSlice"
-import { useAppDispatch, useAppSelector } from "@/redux/hooks"
-import styles from '@/styles/PcBuilder.module.css'
+import { ICategories } from "@/types/types"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
+import RootLayout from "../components/Layout/RootLayout"
+import PcComponentCard from "../components/pcCopmonent"
+import { resetComponent } from "../redux/features/pcBuilderSlice"
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
+import styles from '../styles/PcBuilder.module.css'
 
 const rootUrl = process.env.NEXTAUTH_URL
 
-interface ICategories {
-  categories: {
-    [x: string]: any
-    categories:string[]
-  }
-}
+
 const PcBuilder = ({ categories }:ICategories) => {
   const router = useRouter();
   const dispatch = useAppDispatch()
@@ -54,6 +50,7 @@ const PcBuilder = ({ categories }:ICategories) => {
               Swal.fire('Congratulations!!',
               "Your PC has been successfully built")
               dispatch(resetComponent())
+              router.push('/')
             }}>Complete build</button>
           </div> :
             <div className={styles.empty_builder}>
@@ -74,6 +71,14 @@ PcBuilder.getLayout = function getLayout(page: React.ReactNode) {
 export default PcBuilder
 
 export const getServerSideProps = async () => {
+  //  if (typeof window === 'undefined') {
+  //    return {
+  //   props: {
+  //     categories:[],
+  //   },
+  //   revalidate: 30,
+  // };
+  // }
   const res = await fetch(`${rootUrl}/api/category`);
   const data = await res.json();
   return {

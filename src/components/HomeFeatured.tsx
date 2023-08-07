@@ -1,7 +1,7 @@
-import styles from '@/styles/HomeFeatured.module.css';
-import { PcComponent } from "@/types/types";
 import Image from "next/image";
 import { useRouter } from 'next/router';
+import styles from '../styles/HomeFeatured.module.css';
+import { PcComponent } from "../types/types";
 
 const HomeFeatured = ({ component }: PcComponent) => {
     const router = useRouter()

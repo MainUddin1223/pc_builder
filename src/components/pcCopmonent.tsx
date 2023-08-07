@@ -1,6 +1,6 @@
-import styles from '@/styles/PcComponent.module.css';
-import { PcComponent } from "@/types/types";
 import Image from "next/image";
+import styles from '../styles/PcComponent.module.css';
+import { PcComponent } from "../types/types";
 
 const PcComponentCard = ({ component }: PcComponent) => {
     return (

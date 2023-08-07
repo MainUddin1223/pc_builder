@@ -29,3 +29,19 @@ export interface PcComponent{
 export interface PcComponents {
   components: Details;
 }
+export interface ICategories {
+  categories: {
+    [x: string]: any;
+    categories: string[];
+  };
+}
+export interface IDetailProps {
+  details: Details;
+}
+export interface Props {
+  children: React.ReactNode;
+}
+export interface IComponent {
+  component: Details[];
+  count: number;
+}

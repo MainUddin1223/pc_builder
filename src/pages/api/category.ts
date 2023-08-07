@@ -1,5 +1,5 @@
-import { Details } from "@/types/types";
 import type { NextApiRequest, NextApiResponse } from "next";
+import { Details } from "../../types/types";
 const { MongoClient, ServerApiVersion } = require("mongodb");
 const uri =
   "mongodb+srv://pc_builder:pc_builder@cluster0.kbyclso.mongodb.net/?retryWrites=true&w=majority";

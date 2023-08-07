@@ -1,13 +1,12 @@
-import { useAppSelector } from '@/redux/hooks';
-import styles from '@/styles/RootLayout.module.css';
+import { Props } from "@/types/types";
 import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
 import { GiHamburgerMenu } from 'react-icons/gi';
-interface Props{
-    children:React.ReactNode
-}
+import { useAppSelector } from '../../redux/hooks';
+import styles from '../../styles/RootLayout.module.css';
+
 
 const RootLayout = ({ children }: Props) => {
   const {count} = useAppSelector(state=>state.component)

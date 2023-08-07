@@ -1,5 +1,5 @@
-import pcBuilderReducer from '@/redux/features/pcBuilderSlice';
 import { configureStore } from "@reduxjs/toolkit";
+import pcBuilderReducer from '../redux/features/pcBuilderSlice';
 
 const store = configureStore({
   reducer: {

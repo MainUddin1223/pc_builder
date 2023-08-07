@@ -1,11 +1,11 @@
-import banner from '@/assets/banner.jpg';
-import HomeFeatured from '@/components/HomeFeatured';
-import RootLayout from "@/components/Layout/RootLayout";
-import styles from '@/styles/Category.module.css';
-import { Details, PcComponents } from "@/types/types";
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import banner from '../../assets/banner.jpg';
+import HomeFeatured from '../../components/HomeFeatured';
+import RootLayout from "../../components/Layout/RootLayout";
+import styles from '../../styles/Category.module.css';
+import { Details, PcComponents } from "../../types/types";
 
 const rootUrl = process.env.NEXTAUTH_URL
 
@@ -36,6 +36,12 @@ Product.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticPaths = async () => {
+  //  if (typeof window === 'undefined') {
+  //      return {
+  //     paths: [],
+  //     fallback: true
+  //   };
+  // }
   const res = await fetch(`${rootUrl}/api/category`);
   const data = await res.json();
   const categories = data.data;
@@ -50,7 +56,15 @@ export const getStaticPaths = async () => {
   };
 };
 
-export const getStaticProps = async (context:GetStaticPropsContext) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  //  if (typeof window === 'undefined') {
+  //    return {
+  //   props: {
+  //     components:[],
+  //   },
+  //   revalidate: 30,
+  // };
+  // }
     const category = context.params?.category;
   const res = await fetch(`${rootUrl}/api/category/${category}`);
   const data = await res.json();

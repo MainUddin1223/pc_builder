@@ -1,9 +1,9 @@
-import store from '@/redux/store';
-import '@/styles/globals.css';
 import { NextPage } from 'next';
 import { SessionProvider } from "next-auth/react";
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
+import store from '../redux/store';
+import '../styles/globals.css';
 
 type PageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: React.ReactNode) => React.ReactNode;

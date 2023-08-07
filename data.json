@@ -427,5 +427,37 @@
       "The RGB backlighting looks stunning and is customizable.",
       "Perfect for both gaming and typing tasks."
     ]
+  },
+  {
+    "image": "/images/monitor-3.jpg",
+    "productName": "UltraWide Gaming Monitor-3",
+    "category": "monitor",
+    "status": "In Stock",
+    "price": 599.99,
+    "description": "Experience immersive gaming with this UltraWide gaming monitor.",
+    "keyFeatures": {
+      "brand": "GamerTech",
+      "model": "UW-1234",
+      "specification": "35-inch UltraWide QHD Curved Display",
+      "resolution": "3440x1440",
+      "refreshRate": "144Hz",
+      "responseTime": "1ms",
+      "aspectRatio": "21:9",
+      "connectivity": "HDMI, DisplayPort, USB Hub",
+      "adaptiveSync": "AMD FreeSync",
+      "brightness": "350 cd/m²",
+      "contrastRatio": "1000:1",
+      "viewingAngle": "178°/178°",
+      "builtInSpeakers": "Yes",
+      "VESACompatible": "Yes"
+    },
+    "individualRating": 4.8,
+    "averageRating": 4.6,
+    "reviews": [
+      "The monitor's picture quality is amazing, and the colors are vibrant.",
+      "The 144Hz refresh rate makes a huge difference in fast-paced games.",
+      "The curved design adds to the immersive gaming experience.",
+      "I love the extra screen real estate for multitasking and productivity."
+    ]
   }
 ]
