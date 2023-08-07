@@ -1,5 +1,6 @@
 import { useAppSelector } from '@/redux/hooks';
 import styles from '@/styles/RootLayout.module.css';
+import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
@@ -12,6 +13,8 @@ const RootLayout = ({ children }: Props) => {
   const {count} = useAppSelector(state=>state.component)
   const [hideNav, setHideNav] = useState(true)
   const router = useRouter()
+  const { data: session } = useSession();
+    console.log("session", session);
   return (
     <div>
       <nav className={styles.nav_section}>
@@ -46,16 +49,24 @@ const RootLayout = ({ children }: Props) => {
                 </ul>
               </div>
                <Link href='/pc_builder'>
-                <li>PC Builder <span className={styles.quantity} style={{color:"red",fontWeight:"bolder",marginTop:'-10px'}}>{ count>0 && count}</span></li>
-                    </Link>
-              <li>Login</li>
+                <li>PC Builder {count>0 && <span className={styles.quantity} style={{color:"red",fontWeight:"bolder",marginTop:'-10px'}}>{ count}</span>}</li>
+              </Link>
+                      {session?.user ? (
+                <li onClick={() => signOut()}>Logout</li> ):(
+              <Link href='/login'>
+                <li>Login</li>
+              </Link>
+        )}
             </ul>
         </div>
         </div>
         <GiHamburgerMenu className={styles.ham_menu} onClick={()=>setHideNav(!hideNav) } />
         </nav>
         <div style={{minHeight:"100vh"}}>{children}</div>
-        <div>Footer</div>
+      <div className={styles.footer_section}>
+        <h5>Pc bulder</h5>
+        <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat, cumque.</p>
+          </div>
     </div>
   );
 };

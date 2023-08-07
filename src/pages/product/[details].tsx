@@ -6,6 +6,7 @@ import { Details } from "@/types/types";
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+const rootUrl = process.env.NEXTAUTH_URL
 interface IDetailProps{
     details:Details
 }
@@ -55,7 +56,7 @@ ProductDetails.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/products");
+  const res = await fetch(`${rootUrl}/api/products`);
   const data = await res.json();
   const products = data.data;
 
@@ -71,7 +72,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context:GetStaticPropsContext) => {
     const details = context.params?.details;
-    const url = `http://localhost:3000/api/product/${details}`
+    const url = `${rootUrl}/api/product/${details}`
     const res = await fetch(url);
   const data = await res.json();
   return {

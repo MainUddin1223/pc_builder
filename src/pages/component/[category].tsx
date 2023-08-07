@@ -7,6 +7,8 @@ import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 
+const rootUrl = process.env.NEXTAUTH_URL
+
 const Product = ({ components}:PcComponents) => {
     const router = useRouter()
     const { category } = router.query;
@@ -34,7 +36,7 @@ Product.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch("http://localhost:3000/api/category");
+  const res = await fetch(`${rootUrl}/api/category`);
   const data = await res.json();
   const categories = data.data;
 
@@ -50,7 +52,7 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context:GetStaticPropsContext) => {
     const category = context.params?.category;
-  const res = await fetch(`http://localhost:3000/api/category/${category}`);
+  const res = await fetch(`${rootUrl}/api/category/${category}`);
   const data = await res.json();
   return {
     props: {

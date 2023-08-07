@@ -14,6 +14,7 @@ import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
 import { MdDevicesOther, MdMonitor } from 'react-icons/md';
 ;
 const inter = Inter({ subsets: ['latin'] });
+const rootUrl = process.env.NEXTAUTH_URL
 
 const Home = ({ components }: PcComponents) => {
   return (
@@ -94,7 +95,7 @@ Home.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch("http://localhost:3000/api/components");
+  const res = await fetch(`${rootUrl}/api/components`);
   const data = await res.json();
   return {
     props: {

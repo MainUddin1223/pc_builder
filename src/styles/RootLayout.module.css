@@ -90,3 +90,14 @@
     left: -100%;
   }
 }
+.footer_section {
+  background-color: black;
+  text-align: center;
+  color: white;
+  margin-top: 15px;
+  padding: 10px;
+}
+.footer_section h5 {
+  text-transform: uppercase;
+  padding: 5px;
+}

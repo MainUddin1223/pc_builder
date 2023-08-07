@@ -7,6 +7,8 @@ import Head from "next/head"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
 
+const rootUrl = process.env.NEXTAUTH_URL
+
 interface ICategories {
   categories: {
     [x: string]: any
@@ -72,7 +74,7 @@ PcBuilder.getLayout = function getLayout(page: React.ReactNode) {
 export default PcBuilder
 
 export const getServerSideProps = async () => {
-  const res = await fetch("http://localhost:3000/api/category");
+  const res = await fetch(`${rootUrl}/api/category`);
   const data = await res.json();
   return {
     props: {
