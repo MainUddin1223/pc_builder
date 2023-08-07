@@ -7,6 +7,7 @@ import { CgSmartphoneRam } from 'react-icons/cg';
 import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
 import { MdDevicesOther, MdMonitor } from 'react-icons/md';
 import banner from '../assets/banner.jpg';
+import drem_pc from '../assets/dream.jpg';
 import Hero from '../components/Hero';
 import HomeFeatured from '../components/HomeFeatured';
 import RootLayout from '../components/Layout/RootLayout';
@@ -84,6 +85,15 @@ const Home = ({ components }: PcComponents) => {
             </div>
           </div>
       </div>
+      </div>
+      <div className={styles.dream_pc_container}>
+        <div className={styles.dream_pc_description}>
+          <h1>Build your dream pc</h1>
+          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Repellat blanditiis labore fugiat dolorem nesciunt aliquid eum illo quidem debitis cupiditate.</p>
+        </div>
+        <div>
+          <Image src={drem_pc} alt='dream pc' width={300} height={300} layout='responsive'/>
+        </div>
       </div>
     </>
   );
