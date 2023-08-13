@@ -2,22 +2,22 @@ import { ICategories } from "@/types/types"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
-import RootLayout from "../components/Layout/RootLayout"
-import PcComponentCard from "../components/pcCopmonent"
-import { resetComponent } from "../redux/features/pcBuilderSlice"
-import { useAppDispatch, useAppSelector } from "../redux/hooks"
+import RootLayout from "../../components/Layout/RootLayout"
+import PcComponentCard from "../../components/pcCopmonent"
+import { resetComponent } from "../../redux/features/pcBuilderSlice"
+import { useAppDispatch, useAppSelector } from "../../redux/hooks"
 import styles from '../styles/PcBuilder.module.css'
 
 const rootUrl = process.env.NEXTAUTH_URL
 
 
-const PcBuilder = ({ categories }:ICategories) => {
+const PcBuilder = ({ categories }: ICategories) => {
   const router = useRouter();
   const dispatch = useAppDispatch()
-  const { component,count } = useAppSelector(state => state.component);
+  const { component, count } = useAppSelector(state => state.component);
   return (
     <>
-                <Head>
+      <Head>
         <title>PC_BUILDER</title>
         <meta
           name="description"
@@ -32,7 +32,7 @@ const PcBuilder = ({ categories }:ICategories) => {
             categories.map((category: string) => (
               <div key={category} className={styles.category_container} >
                 <p>{category}</p>
-                <button className={styles.category_button} onClick={()=>router.push(`/component/${category}`)}>Select</button>
+                <button className={styles.category_button} onClick={() => router.push(`/component/${category}`)}>Select</button>
               </div>
             ))
           }
@@ -40,15 +40,15 @@ const PcBuilder = ({ categories }:ICategories) => {
         {
           count >= 1 ? <div className={styles.builder_card_container}>
             <div className={styles.builder_card}>
-                 {
-              component.map((card) => (
-                <PcComponentCard component={card} key={card._id} />
-              ))
-            }
-         </div>
+              {
+                component.map((card) => (
+                  <PcComponentCard component={card} key={card._id} />
+                ))
+              }
+            </div>
             <button className={`${styles.complete_button} ${count < 5 && styles.complete_button_disabled}`} onClick={() => {
               Swal.fire('Congratulations!!',
-              "Your PC has been successfully built")
+                "Your PC has been successfully built")
               dispatch(resetComponent())
               router.push('/')
             }}>Complete build</button>
@@ -56,12 +56,12 @@ const PcBuilder = ({ categories }:ICategories) => {
             <div className={styles.empty_builder}>
               <h1>Pc building yet to start</h1>
               <p>Select the components and make your dream pc</p>
-          </div>
+            </div>
         }
 
-        </div>
+      </div>
     </>
-    )
+  )
 }
 
 PcBuilder.getLayout = function getLayout(page: React.ReactNode) {

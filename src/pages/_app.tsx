@@ -15,8 +15,9 @@ export default function App({ Component, pageProps }: AppProps) {
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
-        {getLayout(<Component {...pageProps} />)}
+          {getLayout(<Component {...pageProps} />)}
+
       </SessionProvider>
-    </Provider>
+      </Provider>
   );
 }

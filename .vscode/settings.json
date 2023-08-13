@@ -8,7 +8,7 @@
   },
   "[typescriptreact]": {
     "editor.formatOnSave": false,
-    "editor.defaultFormatter": null
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "javascript.validate.enable": false, //disable all built-in syntax checking
   "editor.codeActionsOnSave": {
