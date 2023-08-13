@@ -1,0 +1,36 @@
+.card_container {
+  display: flex;
+  padding: 20px;
+  justify-content: center;
+  align-items: center;
+}
+.featured_section {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  min-width: 150px;
+  margin: 10px;
+  border-radius: 5px;
+}
+.product_info {
+  padding: 5px;
+  width: 60%;
+}
+.product_btn_group {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 10px;
+}
+.product_btn_group button {
+  padding: 5px 10px;
+  background-color: var(--secondary-color);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+.product_btn_group button:hover {
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.featured_image {
+  flex-basis: 40%;
+  max-width: 150px;
+}

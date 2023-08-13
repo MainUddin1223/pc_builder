@@ -7,13 +7,25 @@
   flex-wrap: wrap;
 }
 .category_header_container {
-  display: flex;
+  background-color: var(--secondary-color);
+  display: inline-block;
+  color: white;
+  padding: 2px 45px 2px 8px;
+  clip-path: polygon(0 0, 85% 0, 95% 100%, 0% 100%);
   align-items: center;
-  gap: 20px;
-  font-size: 30px;
+  font-size: 15px;
   font-weight: bold;
-  padding: 20px;
+  margin: 0 10px;
 }
 .category_header_container p {
   text-transform: uppercase;
+}
+
+.category_hr {
+  background-color: var(--secondary-color);
+  border: none;
+  height: 2px;
+  margin-bottom: 10px;
+  width: 100%;
+  margin: 0 10px;
 }

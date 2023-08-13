@@ -29,9 +29,6 @@
   display: flex;
   gap: 10px;
 }
-.nav-bar--hidden {
-  transform: translateY(-100%);
-}
 
 .nav_list_container li {
   font-weight: bold;
@@ -99,11 +96,25 @@
 .home_cross_icons {
   display: none;
 }
+.responsive_cart {
+  position: absolute;
+  right: 20px;
+  top: 10px;
+  font-size: 21px;
+  color: var(--head-color);
+  display: none;
+}
 @media (max-width: 992px) {
   .nav_container {
     flex-direction: column;
     margin: 0 auto;
     z-index: 999;
+  }
+  .cart {
+    display: none;
+  }
+  .responsive_cart {
+    display: block;
   }
   .dropdown_wrapper {
     position: fixed;

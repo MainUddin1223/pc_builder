@@ -1,3 +1,4 @@
+import styles from '@/styles/PcBuilder.module.css'
 import { ICategories } from "@/types/types"
 import Head from "next/head"
 import { useRouter } from "next/router"
@@ -6,7 +7,6 @@ import RootLayout from "../../components/Layout/RootLayout"
 import PcComponentCard from "../../components/pcCopmonent"
 import { resetComponent } from "../../redux/features/pcBuilderSlice"
 import { useAppDispatch, useAppSelector } from "../../redux/hooks"
-import styles from '../styles/PcBuilder.module.css'
 
 const rootUrl = process.env.NEXTAUTH_URL
 

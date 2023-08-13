@@ -2,33 +2,34 @@ import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import banner from '../../assets/banner.jpg';
-import HomeFeatured from '../../components/HomeFeatured';
+import Featured from '../../components/Featured';
 import RootLayout from "../../components/Layout/RootLayout";
 import styles from '../../styles/Category.module.css';
 import { Details, PcComponents } from "../../types/types";
 
 const rootUrl = process.env.NEXTAUTH_URL
 
-const Product = ({ components}:PcComponents) => {
-    const router = useRouter()
-    const { category } = router.query;
-    return (
-        <div className={styles.category_container}>
-                 <div style={{margin:"10px 0"}} >
-        <Image src={banner} alt="banner" layout="responsive"/>
+const Product = ({ components }: PcComponents) => {
+  const router = useRouter()
+  const { category } = router.query;
+  return (
+    <div className={styles.category_container}>
+      <div style={{ margin: "10px 0" }} >
+        <Image src={banner} alt="banner" layout="responsive" />
       </div>
-            <div className={styles.category_header_container}>
-            <p >{ `Category > ${category}`}</p>
-            </div>
-            <div className={styles.component_container}>
-                {
-                   components?.map((component: Details) => (
-        <HomeFeatured component={component} key={component._id} />
-      ))
-                }
-            </div>
-        </div>
-    )
+      <div className={styles.category_header_container}>
+        <p >{`Category > ${category}`}</p>
+      </div>
+        <hr className={styles.category_hr} />
+      <div className={styles.component_container}>
+        {
+          components?.map((component: Details) => (
+            <Featured component={component} key={component._id} />
+          ))
+        }
+      </div>
+    </div>
+  )
 }
 
 Product.getLayout = function getLayout(page: React.ReactNode) {
@@ -46,7 +47,7 @@ export const getStaticPaths = async () => {
   const data = await res.json();
   const categories = data.data;
 
-  const paths = categories?.map((category:string) => ({
+  const paths = categories?.map((category: string) => ({
     params: { category },
   }));
 
@@ -65,7 +66,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   //   revalidate: 30,
   // };
   // }
-    const category = context.params?.category;
+  const category = context.params?.category;
   const res = await fetch(`${rootUrl}/api/category/${category}`);
   const data = await res.json();
   return {

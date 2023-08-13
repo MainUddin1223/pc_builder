@@ -16,7 +16,6 @@ const LoginPage = () => {
         <title>Next Login</title>
       </Head>
       <div className={styles.form}>
-        <h3>LOGIN</h3>
         <div className={styles.social_icons}>
           <GoogleOutlined
             onClick={async() =>
@@ -37,7 +36,7 @@ const LoginPage = () => {
         </div>
         <hr />
         <form >
-          <label htmlFor="">Your Email</label>
+          <label htmlFor="" className={styles.form_label}>Your Email</label>
           <input  type="email" />
           <label htmlFor="">Your Password</label>
           <input type="password"/>

@@ -1,4 +1,5 @@
 import Brands from '@/components/Brands';
+import Featured from '@/components/Featured';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -6,11 +7,10 @@ import Link from 'next/link';
 import { BsDeviceSsdFill, BsMotherboardFill } from 'react-icons/bs';
 import { CgSmartphoneRam } from 'react-icons/cg';
 import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
-import { MdDevicesOther, MdMonitor } from 'react-icons/md';
+import { MdMonitor } from 'react-icons/md';
 import banner from '../assets/banner.jpg';
 import drem_pc from '../assets/dream.jpg';
 import Hero from '../components/Hero';
-import HomeFeatured from '../components/HomeFeatured';
 import RootLayout from '../components/Layout/RootLayout';
 import styles from '../styles/Home.module.css';
 import { Details, PcComponents } from '../types/types';
@@ -32,6 +32,14 @@ const Home = ({ components }: PcComponents) => {
       {/* brands */}
       <Brands />
       {/* featured section */}
+
+      {/* <div className={styles.parallax_container}>
+        <div className={styles.parallax_image}></div>
+        <div className={styles.parallox_content}>
+      
+        </div>
+      </div> */}
+
       <div className={styles.featured_heading_section}>
         <div style={{display:'flex',justifyContent:'space-between',cursor:'pointer'}}>
           <h5 className={styles.featured_heading}>Featured </h5>
@@ -41,14 +49,20 @@ const Home = ({ components }: PcComponents) => {
       </div>
       <div className={styles.cards_container}>
         {components.map((component: Details) => (
-          <HomeFeatured component={component} key={component._id} />
+          <Featured component={component} key={component._id} />
         ))}
       </div>
       <div style={{ margin: "10px 0" }} >
         <Image src={banner} alt="banner" layout="responsive" />
       </div>
       <div>
-        <h1 style={{ textAlign: "center", padding: "10px" }}>Featured Categories</h1>
+        <div className={styles.featured_heading_section}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer' }}>
+            <h5 className={styles.featured_heading}>Categories </h5>
+            <h5 style={{ marginRight: '5px' }}>Browse all categories </h5>
+          </div>
+          <hr className={styles.featured_hr} />
+        </div>
         <div>
           <div className={styles.categories_container}>
             <div className={styles.icon_container}>
@@ -84,13 +98,7 @@ const Home = ({ components }: PcComponents) => {
             <div className={styles.icon_container}>
               <Link href='/component/monitor'>
                 <MdMonitor className={styles.icon} />
-                <span className={styles.tooltip}>Monitor</span>
-              </Link>
-            </div>
-            <div className={styles.icon_container}>
-              <Link href='/component/others'>
-                <MdDevicesOther className={styles.icon} />
-                <span className={styles.tooltip}>OTHER</span>
+                <span className={styles.tooltip}>MONITOR</span>
               </Link>
             </div>
           </div>
