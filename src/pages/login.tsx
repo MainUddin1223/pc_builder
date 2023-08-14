@@ -9,6 +9,7 @@ const rootUrl = process.env.NEXTAUTH_URL
 
 const LoginPage = () => {
   const router = useRouter()
+  const redirectRoute = router?.query?.callbackUrl as string ?? '/';
 
   return (
     <div>
@@ -22,7 +23,7 @@ const LoginPage = () => {
               {await signIn("google", {
                 callbackUrl:rootUrl,
               })
-              router.push('/')}
+              router.push(redirectRoute)}
             }
           />
           <GithubOutlined

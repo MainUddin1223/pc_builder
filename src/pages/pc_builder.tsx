@@ -3,10 +3,10 @@ import { ICategories } from "@/types/types"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
-import RootLayout from "../../components/Layout/RootLayout"
-import PcComponentCard from "../../components/pcCopmonent"
-import { resetComponent } from "../../redux/features/pcBuilderSlice"
-import { useAppDispatch, useAppSelector } from "../../redux/hooks"
+import RootLayout from "../components/Layout/RootLayout"
+import PcComponentCard from "../components/pcCopmonent"
+import { resetComponent } from "../redux/features/pcBuilderSlice"
+import { useAppDispatch, useAppSelector } from "../redux/hooks"
 
 const rootUrl = process.env.NEXTAUTH_URL
 
