@@ -1,4 +1,4 @@
-import Loading from "@/pages/loading";
+import Loading from "@/components/loading";
 import { Props } from "@/types/types";
 import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
@@ -18,7 +18,6 @@ const RootLayout = ({ children }: Props) => {
   const { data: session } = useSession();
   const [isDropdown, setIsDropdown] = useState(false);
 
-
   useEffect(() => {
     if (isDropdown) {
       document.body.style.overflowY = "hidden";
@@ -26,14 +25,13 @@ const RootLayout = ({ children }: Props) => {
       document.body.style.overflowY = "scroll";
     }
     return () => {
-      document.body.style.overflowY = "scroll"; // Reset overflowY when the component unmounts
+      document.body.style.overflowY = "scroll";
     };
   }, [isDropdown]);
 
   return (
     <div>
       <nav className={`${styles.nav_section} ${styles.navClassList}`}>
-
         {isDropdown && (
           <div
             className={styles.dropdown_wrapper}
@@ -42,7 +40,6 @@ const RootLayout = ({ children }: Props) => {
             }}
           ></div>
         )}
-
         <div className={styles.nav_container}>
           <div className={styles.logo_text} onClick={() => router.push('/')}>PC Builder</div>
           <div>
