@@ -56,7 +56,9 @@ const RootLayout = ({ children }: Props) => {
               </div>
               <div className={styles.categories_container}>
                 <li className={styles.nav_item}>Categories</li>
-                <ul className={`${styles.category_list}`}>
+                <ul className={`${styles.category_list}`} onClick={() => {
+                  setIsDropdown(false);
+                }}>
                   <Link href='/component/processor'>
                     <li>Processor</li>
                   </Link>
@@ -80,7 +82,9 @@ const RootLayout = ({ children }: Props) => {
                   </Link>
                 </ul>
               </div>
-              <Link href='/pc_builder'>
+              <Link href='/pc_builder' onClick={() => {
+                setIsDropdown(false);
+              }}>
                 <li>Build pc </li>
               </Link>
               <div className={styles.cart}>
@@ -89,8 +93,10 @@ const RootLayout = ({ children }: Props) => {
                 </Link>
               </div>
               {session?.user ? (
-                <li onClick={() => signOut()}>Logout</li>) : (
-                <Link href='/login'>
+                <li onClick={() => { signOut(), setIsDropdown(false) }} >Logout</li>) : (
+                  <Link href='/login' onClick={() => {
+                    setIsDropdown(false);
+                  }}>
                   <li>Login</li>
                 </Link>
               )}

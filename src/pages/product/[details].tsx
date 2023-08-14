@@ -1,6 +1,7 @@
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useState } from "react";
 import { ImStarFull, ImStarHalf } from 'react-icons/im';
 import RootLayout from "../../components/Layout/RootLayout";
 import { addToBuilder } from "../../redux/features/pcBuilderSlice";
@@ -13,6 +14,8 @@ const rootUrl = process.env.NEXTAUTH_URL
 const ProductDetails = ({ details }: IDetailProps) => {
   const dispatch = useAppDispatch()
   const router = useRouter()
+const [overview,setOverview] = useState('overview')
+
   return (
     <div className={styles.product_details_container}>
       <div className={styles.details_img_container}>
@@ -21,7 +24,7 @@ const ProductDetails = ({ details }: IDetailProps) => {
       <div className={styles.product_details}>
         <div>
           <h3 className={styles.product_header}>{details?.productName}</h3>
-          <p>{details?.description}</p>
+          <p className={styles.product_description}>{details?.description} Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit blanditiis alias pariatur eveniet doloribus voluptate, suscipit ipsum impedit iusto!</p>
           <div className={styles.avarage_rating}>
             {Array(Math.ceil(details?.averageRating))
               .fill(null)
@@ -32,28 +35,38 @@ const ProductDetails = ({ details }: IDetailProps) => {
                     <ImStarHalf key={index} style={{ color: 'rgb(13, 202, 231)' }} />
                 )
               ))}
-            <p style={{fontSize:'12px',fontWeight:"bold",marginLeft:"10px"}}>Avarage review</p>
           </div>
-          <p>Rating: {details?.averageRating}</p>
-          <p>Price: {details?.price}</p>
+          <p style={{margin:"10px 0",fontWeight:"bold"}}>Price: {details?.price} $</p>
         </div>
-        <p>Status: {details?.status}</p>
+        <p className={styles.status}>{details?.status}</p>
+          <p style={{ margin: "10px 0", fontWeight: "bold" }}>Category: <span style={{ textTransform: "uppercase" }}>{details?.category}</span></p>
         <div>
-          <h5>Quick Overview</h5>
-          {details?.keyFeatures && Object.entries(details?.keyFeatures)?.map(([key, value]) => (
-            <p key={key}>
-              <strong>{key}: </strong>
-              {value}
-            </p>
-          ))}
-          <p>Category: {details?.category}</p>
+          <div className={styles.overview_section}>
+            <p className={`${overview === 'overview' && styles.overview_item}`} onClick={()=>setOverview('overview')}>Overview</p>
+            <p className={`${overview === 'review' && styles.overview_item}`} onClick={() => setOverview('review')}>Reviews</p>
+          </div>
+          <hr style={{margin:'10px 0'}}/>
+          <div className={styles.accordian_section}>
+            {
+              overview === 'overview' ? (
+                details?.keyFeatures ? (
+                  Object.entries(details?.keyFeatures)?.map(([key, value]) => (
+                    <p key={key}>
+                      <strong>{key}: </strong>
+                      {value}
+                    </p>
+                  ))
+                ) : (
+                  <p>Coming soon</p>
+                )
+              ) : (
+                details?.reviews && details?.reviews.map((review, index) => (
+                  <p key={index}>* {review}</p>
+                ))
+              )
+            }
+</div>
         </div>
-        <p>Reviews : </p>
-        {
-          details?.reviews && details?.reviews.map((review, index) => (
-            <p key={index}>{review}</p>
-          ))
-        }
         <button className={styles.add_to_build_button} onClick={() => {
           dispatch(addToBuilder(details))
           router.push('/pc_builder')

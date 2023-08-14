@@ -1,5 +1,6 @@
 import Brands from '@/components/Brands';
-import Featured from '@/components/Featured';
+// import Featured from '@/components/Featured';
+import dynamic from 'next/dynamic';
 import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
@@ -14,11 +15,13 @@ import Hero from '../components/Hero';
 import RootLayout from '../components/Layout/RootLayout';
 import styles from '../styles/Home.module.css';
 import { Details, PcComponents } from '../types/types';
+const Featured = dynamic(() => import('@/components/Featured'))
 
 const inter = Inter({ subsets: ['latin'] });
 
 const rootUrl = process.env.NEXTAUTH_URL
 const Home = ({ components }: PcComponents) => {
+
   return (
     <>
       <Head>
@@ -32,13 +35,6 @@ const Home = ({ components }: PcComponents) => {
       {/* brands */}
       <Brands />
       {/* featured section */}
-
-      {/* <div className={styles.parallax_container}>
-        <div className={styles.parallax_image}></div>
-        <div className={styles.parallox_content}>
-      
-        </div>
-      </div> */}
 
       <div className={styles.featured_heading_section}>
         <div style={{display:'flex',justifyContent:'space-between',cursor:'pointer'}}>
