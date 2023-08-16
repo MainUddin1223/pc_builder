@@ -1,13 +1,21 @@
-import { addToBuilder } from "@/redux/features/pcBuilderSlice";
-import { useAppDispatch } from "@/redux/hooks";
-import { PcComponent } from "@/types/types";
+import { addToBuilder, removeFromCart } from "@/redux/features/pcBuilderSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hooks";
+import { Details, PcComponent } from "@/types/types";
 import Image from "next/image";
 import { useRouter } from "next/router";
+import { useEffect, useState } from "react";
 import styles from '../styles/Featured.module.css';
 
 const Featured = ({component}:PcComponent) => {
     const router = useRouter()
     const dispatch = useAppDispatch();
+    const { cartComponents } = useAppSelector(state => state.cartComponents);
+    const [addedComponent, setAddedComponent] = useState<Details | undefined>(undefined);
+    
+    useEffect(() => { 
+        setAddedComponent(cartComponents?.find((card) => card?._id === component?._id))
+    }, [cartComponents])
+
     return (
         <div className={styles.featured_section}>
             <div className={styles.card_container}>
@@ -24,7 +32,16 @@ const Featured = ({component}:PcComponent) => {
             </div>
             <div className={styles.product_btn_group}>
                 <button onClick={() => router.push(`/product/${component._id}`)}>Details</button>
-                <button onClick={()=>dispatch(addToBuilder(component))}>Add to cart</button>
+                {
+                    addedComponent ?
+                        <div className={styles.product_quantity}>
+                            <button onClick={() => dispatch(removeFromCart(component))}>-</button>
+                            <input  value={addedComponent?.quantity}/>
+                            <button onClick={() => dispatch(addToBuilder(component))}>+</button>
+                    </div>
+                    : <button onClick={() => dispatch(addToBuilder(component))}>Add to cart</button>
+                }
+                
             </div>
     </div>
     )

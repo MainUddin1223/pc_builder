@@ -34,3 +34,13 @@
   flex-basis: 40%;
   max-width: 150px;
 }
+.product_quantity {
+  display: flex;
+  gap: 5px;
+}
+.product_quantity input {
+  width: 40px;
+  text-align: center;
+  border-radius: 5px;
+  font-weight: bold;
+}

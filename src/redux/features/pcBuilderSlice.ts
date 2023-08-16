@@ -1,47 +1,61 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IComponent } from "../../types/types";
 
-
-
-
 const initialState: IComponent = {
-    component: [],
-    count:0
+  cartComponents: [],
+  count: 0,
 };
 
 export const pcBuilderSlice = createSlice({
-  name: "component",
+  name: "cartComponents",
   initialState,
   reducers: {
-      addToBuilder: (state, action) => {
-           const isExisting = state.component.find(
-             (component) => component._id === action.payload._id
-          );
-              if (isExisting) {
-                isExisting.quantity = isExisting.quantity! + 1; //! type assertion
-                
-              } else {
-                state.component.push({ ...action.payload, quantity: 1 });
-          }
-          state.count+=1 
-      },
-      resetComponent: (state) => {
-          state.component = []
-          state.count=0
+    addToBuilder: (state, action) => {
+      const isExisting = state.cartComponents.find(
+        (component) => component._id === action.payload._id
+      );
+      if (isExisting) {
+        isExisting.quantity = isExisting.quantity! + 1; //! type assertion
+      } else {
+        state.cartComponents.push({ ...action.payload, quantity: 1 });
       }
-    // increment: (state) => {
-    //   state.value += 1;
-    // },
-    // decrement: (state) => {
-    //   state.value -= 1;
-    // },
-    // incrementByAmount: (state, action) => {
-    //   state.value += action.payload;
-    // },
+      state.count += 1;
+    },
+    // addByQuantity: (state, action) => {
+    //   state.count+=1
+    //    console.log(action.payload);
+    //   const existingComponent = state.components.find(
+    //     (component) => component._id === action.payload._id
+    //   );
+    //   if (existingComponent) {
+    //     existingComponent.quantity = existingComponent.quantity + action.payload.quantity;
+    //     state.count += action.payload.quantity;
+    //   }
+    // }
+    // ,
+    removeFromCart: (state, action) => {
+      const isExisting = state.cartComponents.find(
+        (component) => component._id === action.payload._id
+      );
+      if (isExisting && isExisting?.quantity! > 1) {
+        isExisting.quantity! -= 1;
+        state.count -= 1;
+      } else if (isExisting?.quantity === 1) {
+        state.cartComponents = state.cartComponents.filter(
+          (component) => component._id !== action.payload._id
+        );
+        state.count -= 1;
+      }
+    },
+    resetComponent: (state) => {
+      state.cartComponents = [];
+      state.count = 0;
+    },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToBuilder, resetComponent } = pcBuilderSlice.actions;
+export const { addToBuilder, resetComponent, removeFromCart } =
+  pcBuilderSlice.actions;
 
 export default pcBuilderSlice.reducer;

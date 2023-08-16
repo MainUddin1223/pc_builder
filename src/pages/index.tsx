@@ -19,7 +19,7 @@ const Featured = dynamic(() => import('@/components/Featured'))
 
 const inter = Inter({ subsets: ['latin'] });
 
-const rootUrl = process.env.NEXTAUTH_URL
+const rootUrl = process.env.SERVER_URL
 const Home = ({ components }: PcComponents) => {
 
   return (
@@ -118,7 +118,7 @@ Home.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticProps = async () => {
-  const res = await fetch(`${rootUrl}/api/components`);
+  const res = await fetch(`${rootUrl}/components/featured`);
   const data = await res.json();
   return {
     props: {

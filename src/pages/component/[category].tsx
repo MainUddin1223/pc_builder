@@ -7,7 +7,8 @@ import RootLayout from "../../components/Layout/RootLayout";
 import styles from '../../styles/Category.module.css';
 import { Details, PcComponents } from "../../types/types";
 
-const rootUrl = process.env.NEXTAUTH_URL
+
+const rootUrl = process.env.SERVER_URL
 
 const Product = ({ components }: PcComponents) => {
   const router = useRouter()
@@ -43,10 +44,9 @@ export const getStaticPaths = async () => {
   //     fallback: true
   //   };
   // }
-  const res = await fetch(`${rootUrl}/api/category`);
+  const res = await fetch(`${rootUrl}/components/category`);
   const data = await res.json();
   const categories = data.data;
-
   const paths = categories?.map((category: string) => ({
     params: { category },
   }));
@@ -67,7 +67,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   // };
   // }
   const category = context.params?.category;
-  const res = await fetch(`${rootUrl}/api/category/${category}`);
+  const res = await fetch(`${rootUrl}/components/category/${category}`);
   const data = await res.json();
   return {
     props: {

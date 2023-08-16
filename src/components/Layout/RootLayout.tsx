@@ -13,7 +13,7 @@ import styles from '../../styles/RootLayout.module.css';
 
 const RootLayout = ({ children }: Props) => {
 
-  const { count } = useAppSelector(state => state.component)
+  const { count } = useAppSelector(state => state.cartComponents)
   const router = useRouter()
   const { data: session } = useSession();
   const [isDropdown, setIsDropdown] = useState(false);

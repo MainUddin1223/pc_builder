@@ -8,7 +8,7 @@ import { addToBuilder } from "../../redux/features/pcBuilderSlice";
 import { useAppDispatch } from "../../redux/hooks";
 import styles from '../../styles/ProductDetails.module.css';
 import { Details, IDetailProps } from "../../types/types";
-const rootUrl = process.env.NEXTAUTH_URL
+const rootUrl = process.env.SERVER_URL
 
 
 const ProductDetails = ({ details }: IDetailProps) => {
@@ -82,7 +82,7 @@ ProductDetails.getLayout = function getLayout(page: React.ReactNode) {
 };
 
 export const getStaticPaths = async () => {
-  const res = await fetch(`${rootUrl}/api/products`);
+  const res = await fetch(`${rootUrl}/components`);
   const data = await res.json();
   const products = data.data;
   const paths = products?.map((product: Details) => ({
@@ -95,15 +95,15 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  const details = context.params?.details;
-  const url = `${rootUrl}/api/product/${details}`
+  const id = context.params?.details;
+  const url = `${rootUrl}/components/${id}`
   const res = await fetch(url);
   const data = await res.json();
   return {
     props: {
       details: data.data,
     },
-    revalidate: 10,
+    revalidate: 30,
   };
 };
 

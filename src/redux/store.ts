@@ -3,7 +3,7 @@ import pcBuilderReducer from '../redux/features/pcBuilderSlice';
 
 const store = configureStore({
   reducer: {
-    component: pcBuilderReducer,
+    cartComponents: pcBuilderReducer,
   },
 });
 

@@ -1,5 +1,5 @@
 import styles from '@/styles/PcBuilder.module.css'
-import { ICategories } from "@/types/types"
+import { Details, ICategories } from "@/types/types"
 import Head from "next/head"
 import { useRouter } from "next/router"
 import Swal from "sweetalert2"
@@ -8,13 +8,13 @@ import PcComponentCard from "../components/pcCopmonent"
 import { resetComponent } from "../redux/features/pcBuilderSlice"
 import { useAppDispatch, useAppSelector } from "../redux/hooks"
 
-const rootUrl = process.env.NEXTAUTH_URL
+const rootUrl = process.env.SERVER_URL
 
 
 const PcBuilder = ({ categories }: ICategories) => {
   const router = useRouter();
   const dispatch = useAppDispatch()
-  const { component, count } = useAppSelector(state => state.component);
+  const { cartComponents, count } = useAppSelector(state => state.cartComponents);
   return (
     <>
       <Head>
@@ -41,7 +41,7 @@ const PcBuilder = ({ categories }: ICategories) => {
           count >= 1 ? <div className={styles.builder_card_container}>
             <div className={styles.builder_card}>
               {
-                component.map((card) => (
+                cartComponents.map((card: Details) => (
                   <PcComponentCard component={card} key={card._id} />
                 ))
               }
@@ -79,7 +79,7 @@ export const getServerSideProps = async () => {
   //   revalidate: 30,
   // };
   // }
-  const res = await fetch(`${rootUrl}/api/category`);
+  const res = await fetch(`${rootUrl}/components/category`);
   const data = await res.json();
   return {
     props: {

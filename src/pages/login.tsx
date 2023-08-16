@@ -8,8 +8,7 @@ import styles from "../styles/Login.module.css";
 const rootUrl = process.env.NEXTAUTH_URL
 
 const LoginPage = () => {
-  const router = useRouter()
-  const redirectRoute = router?.query?.callbackUrl as string ?? '/';
+  const router = useRouter();
 
   return (
     <div>
@@ -23,7 +22,7 @@ const LoginPage = () => {
               {await signIn("google", {
                 callbackUrl:rootUrl,
               })
-              router.push(redirectRoute)}
+              router.push('/pc_builder')}
             }
           />
           <GithubOutlined
