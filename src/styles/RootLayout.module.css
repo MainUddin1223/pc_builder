@@ -93,6 +93,15 @@
   background-color: rgba(189, 189, 189, 0.5);
   overflow-y: hidden;
 }
+.profile_dropdown_wrapper {
+  position: fixed;
+  z-index: 99;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  top: 0;
+  z-index: 99;
+}
 .home_cross_icons {
   display: none;
 }
@@ -103,10 +112,16 @@
 }
 .profile_list {
   position: absolute;
-  background-color: white;
+  background-color: rgb(255, 255, 255);
   margin-top: 10px;
-  margin-left: -25px;
-  display: none;
+  margin-left: -30px;
+  font-size: 14px;
+  padding: 10px;
+  z-index: 999;
+}
+.profile_list ul {
+  padding: 5px;
+  cursor: pointer;
 }
 .responsive_cart {
   position: absolute;

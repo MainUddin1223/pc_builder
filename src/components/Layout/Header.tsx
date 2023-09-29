@@ -1,8 +1,9 @@
 import { useAppSelector } from '@/redux/hooks';
 import styles from '@/styles/RootLayout.module.css';
-import { signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import { CgProfile } from 'react-icons/cg';
 import { FaCartArrowDown, FaHome } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -14,7 +15,8 @@ interface IHeaderProps{
 }
 
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
-    const { count } = useAppSelector(state => state.cartComponents)
+    const { count } = useAppSelector(state => state.cartComponents);
+    const [isProfileDropdpwn,setIsProfileDropdown] = useState(false)
     const router = useRouter()
     const { data: session } = useSession();
     return (
@@ -24,6 +26,14 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                     className={styles.dropdown_wrapper}
                     onClick={() => {
                         setIsDropdown(false);
+                    }}
+                ></div>
+            )}
+            {isProfileDropdpwn && (
+                <div
+                    className={styles.profile_dropdown_wrapper}
+                    onClick={() => {
+                        setIsProfileDropdown(false);
                     }}
                 ></div>
             )}
@@ -80,23 +90,24 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             </Link>
                         </div>
                         {session?.user ? (
-                            <li onClick={() => { signOut(),localStorage.clear(), setIsDropdown(false) }} >Logout</li>
-                        //     <li>
-                        //         {
-                        //             session?.user?.image ?
-                        //                 <>
-                        //                     <img src={session?.user?.image} alt="profile" className={styles.profile_img} />
-                        //                     <div className={styles.profile_list}>
-                        //                         <li>profile</li>
-                        //                         <li>history</li>
-                        //                         <li>wishlist</li>
-                        //                         <li>logout</li>
-                        //                     </div>
-                        //                 </> :
-                        //                 <CgProfile />
-                        //         }
-                        //         {/* <Image src={session?.user?.image } height={300} width={300} layout='responsive'/> */}
-                        // </li>
+                            // <li onClick={() => { signOut(),localStorage.clear(), setIsDropdown(false) }} >Logout</li>
+                            <li>
+                                {
+                                    session?.user?.image ?
+                                        <span>
+                                            <img src={session?.user?.image} alt="img" className={styles.profile_img} onClick={()=>setIsProfileDropdown(true)}/>
+                                            {isProfileDropdpwn && <div className={styles.profile_list}>
+                                                <ul>profile</ul>
+                                                <ul>history</ul>
+                                                <ul>wishlist</ul>
+                                                <ul>logout</ul>
+                                            </div>}
+
+                                        </span>:
+                                        <CgProfile />
+                                }
+                                {/* <Image src={session?.user?.image } height={300} width={300} layout='responsive'/> */}
+                        </li>
                         ) : (
                             <Link href='/login' onClick={() => {
                                 setIsDropdown(false);
