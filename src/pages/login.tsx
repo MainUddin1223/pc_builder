@@ -3,27 +3,45 @@ import { GithubOutlined, GoogleOutlined } from "@ant-design/icons";
 import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
+import { useEffect } from "react";
 import styles from "../styles/Login.module.css";
 
 const rootUrl: string = 'http://localhost:8080/api/v1'
+
+
 const LoginPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
-  if (status === 'authenticated') {
-    const option = {
-      method: "POST",
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email: session?.user?.email, name: session?.user?.name })
-    };
-    fetch(`${rootUrl}/auth`, option)
-      .then(data => data.json())
-      .then(res => console.log(res))
-      .then(() => {
-        router.push('/')
-    })
-}
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const token = localStorage.getItem('token');
+      if (!token) {
+        getAuthData()
+      }
+    }
+},[])
+  //get token and verify user from server
+  const getAuthData = () => {
+    if (status === 'authenticated') {
+      const option = {
+        method: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email: session?.user?.email, name: session?.user?.name })
+      };
+      fetch(`${rootUrl}/auth`, option)
+        .then(data => data.json())
+        .then(res => {
+          if (typeof window !== 'undefined') {
+            localStorage.setItem('token',res.data.token)
+          }
+        })
+        .then(() => {
+          router.push('/')
+      })
+  }
+  }
 
   return (
     <div>
@@ -34,7 +52,7 @@ const LoginPage = () => {
         <div className={styles.social_icons}>
           <GoogleOutlined
             onClick={async() =>{
-               await signIn("google");
+              await signIn("google");
             }
             }
           />

@@ -80,7 +80,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             </Link>
                         </div>
                         {session?.user ? (
-                            <li onClick={() => { signOut(), setIsDropdown(false) }} >Logout</li>
+                            <li onClick={() => { signOut(),localStorage.clear(), setIsDropdown(false) }} >Logout</li>
                         //     <li>
                         //         {
                         //             session?.user?.image ?
