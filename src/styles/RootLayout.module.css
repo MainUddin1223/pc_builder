@@ -36,7 +36,7 @@
   position: relative;
 }
 
-.nav_list_container li::after {
+.nav_list_container .nav_item::after {
   content: "";
   position: absolute;
   bottom: 0;
@@ -47,7 +47,7 @@
   transition: width 0.5s ease-in-out;
 }
 
-.nav_list_container li:hover::after {
+.nav_list_container .nav_item:hover::after {
   width: 100%;
 }
 
@@ -94,6 +94,18 @@
   overflow-y: hidden;
 }
 .home_cross_icons {
+  display: none;
+}
+.profile_img {
+  width: 20px;
+  cursor: pointer;
+  border-radius: 50%;
+}
+.profile_list {
+  position: absolute;
+  background-color: white;
+  margin-top: 10px;
+  margin-left: -25px;
   display: none;
 }
 .responsive_cart {

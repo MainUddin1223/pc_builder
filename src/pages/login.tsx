@@ -1,14 +1,29 @@
 import RootLayout from "@/components/Layout/RootLayout";
 import { GithubOutlined, GoogleOutlined } from "@ant-design/icons";
-import { signIn } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import { useRouter } from "next/router";
 import styles from "../styles/Login.module.css";
 
-const rootUrl = process.env.NEXTAUTH_URL
-
+const rootUrl: string = 'http://localhost:8080/api/v1'
 const LoginPage = () => {
   const router = useRouter();
+  const { data: session, status } = useSession();
+  if (status === 'authenticated') {
+    const option = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email: session?.user?.email, name: session?.user?.name })
+    };
+    fetch(`${rootUrl}/auth`, option)
+      .then(data => data.json())
+      .then(res => console.log(res))
+      .then(() => {
+        router.push('/')
+    })
+}
 
   return (
     <div>
@@ -18,19 +33,17 @@ const LoginPage = () => {
       <div className={styles.form}>
         <div className={styles.social_icons}>
           <GoogleOutlined
-            onClick={async() =>
-              {await signIn("google", {
-                callbackUrl:rootUrl,
-              })
-              router.push('/pc_builder')}
+            onClick={async() =>{
+               await signIn("google");
+            }
             }
           />
           <GithubOutlined
             onClick={async() =>
               {await signIn("github", {
-                callbackUrl: rootUrl,
+                callbackUrl: 'http://localhost:3000',
               })
-              router.push('/')}
+            }
             }
           />
         </div>
