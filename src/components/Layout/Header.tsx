@@ -4,6 +4,7 @@ import { useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
+import { BsArrowsAngleContract, BsArrowsAngleExpand } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaCartArrowDown, FaHome } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
@@ -16,7 +17,8 @@ interface IHeaderProps{
 
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const { count } = useAppSelector(state => state.cartComponents);
-    const [isProfileDropdpwn,setIsProfileDropdown] = useState(false)
+    const [isProfileDropdpwn, setIsProfileDropdown] = useState(false);
+    const [isCategoryDropdown,setIsCategorydropdown] = useState(false)
     const router = useRouter()
     const { data: session } = useSession();
     return (
@@ -52,8 +54,18 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             />
                         </div>
                         <div className={styles.categories_container}>
-                            <li className={styles.nav_item}>Categories</li>
-                            <ul className={`${styles.category_list}`} onClick={() => {
+                            <li className={`${styles.nav_item} ${styles.category_wrapper}`} onClick={() => setIsCategorydropdown(!isCategoryDropdown)}>
+                                <span>
+                                    Categories 
+                                </span>
+                                <span className={styles.expand_arrow}>
+                                    {
+                                    isCategoryDropdown ? <BsArrowsAngleExpand /> :
+                                    <BsArrowsAngleContract />
+                                    }
+                                </span>
+                            </li>
+                            <ul className={`${styles.category_list} ${isCategoryDropdown && styles.category_list_mobile}`} onClick={() => {
                                 setIsDropdown(false);
                             }}>
                                 <Link href='/component/processor'>
@@ -95,7 +107,15 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                                 {
                                     session?.user?.image ?
                                         <span>
-                                            <img src={session?.user?.image} alt="img" className={styles.profile_img} onClick={()=>setIsProfileDropdown(true)}/>
+                                            <span className={styles.category_wrapper} onClick={() => setIsProfileDropdown(!isProfileDropdpwn)}>
+                                                <img src={session?.user?.image} alt="img" className={styles.profile_img} />
+                                                <span className={styles.expand_arrow}>
+                                                    {
+                                                        isProfileDropdpwn ? <BsArrowsAngleExpand /> :
+                                                            <BsArrowsAngleContract />
+                                                    }
+                                                </span>
+                                            </span>
                                             {isProfileDropdpwn && <div className={styles.profile_list}>
                                                 <ul>profile</ul>
                                                 <ul>history</ul>
