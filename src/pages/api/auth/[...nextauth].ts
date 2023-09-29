@@ -33,8 +33,8 @@ export const authOptions:any = {
       clientSecret: process.env.GOOGLE_CLIENT_SECRET as string,
     }),
   ],
-  session: {
-    strategy: "jwt",
-  },
+  pages: {
+    signIn:'/login'
+  }
 };
 export default NextAuth(authOptions);

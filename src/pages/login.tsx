@@ -12,14 +12,17 @@ const rootUrl: string = 'http://localhost:8080/api/v1'
 const LoginPage = () => {
   const router = useRouter();
   const { data: session, status } = useSession();
+  
   useEffect(() => {
-    if (typeof window !== 'undefined') {
-      const token = localStorage.getItem('token');
-      if (!token) {
+    const token = localStorage.getItem('token');
+    if (!token) {
         getAuthData()
       }
+    if (token) {
+      router.back()
     }
-},[])
+  }, [status])
+  
   //get token and verify user from server
   const getAuthData = () => {
     if (status === 'authenticated') {
@@ -34,12 +37,10 @@ const LoginPage = () => {
         .then(data => data.json())
         .then(res => {
           if (typeof window !== 'undefined') {
-            localStorage.setItem('token',res.data.token)
+            localStorage.setItem('token', res.data.token);
+            router.push('/')
           }
         })
-        .then(() => {
-          router.push('/')
-      })
   }
   }
 
