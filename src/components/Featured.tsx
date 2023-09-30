@@ -4,6 +4,7 @@ import { Details, PcComponent } from "@/types/types";
 import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
+import { FaHeartCircleMinus, FaHeartCirclePlus } from 'react-icons/fa6';
 import styles from '../styles/Featured.module.css';
 
 const Featured = ({component}:PcComponent) => {
@@ -11,13 +12,42 @@ const Featured = ({component}:PcComponent) => {
     const dispatch = useAppDispatch();
     const { cartComponents } = useAppSelector(state => state.cartComponents);
     const [addedComponent, setAddedComponent] = useState<Details | undefined>(undefined);
-    
-    useEffect(() => { 
+    const [wishList, setWishlist] = useState<string[]>([])
+
+    useEffect(() => {
         setAddedComponent(cartComponents?.find((card) => card?._id === component?._id))
-    }, [cartComponents])
+    }, [cartComponents]);
+
+    useEffect(() => {
+        const storedData = localStorage.getItem('wishlist') as string
+        const data = JSON.parse(storedData);
+        setWishlist(data)
+    },[])
+    
+    const addtoWishlist = (id: string) => {
+        if (wishList) {
+            const isIdExist = wishList.includes(id);
+            if (!isIdExist) {
+                setWishlist([...wishList,id])
+                localStorage.setItem('wishlist', JSON.stringify([...wishList, id]));
+            }
+        }
+        else {
+            setWishlist([id])
+            localStorage.setItem('wishlist', JSON.stringify([id]));
+        }
+    }
+
+    const removeFromWishlist = (id:string) => {
+        const removedItem = wishList.filter(productId => productId !== id)
+        setWishlist(removedItem)
+    }
 
     return (
         <div className={styles.featured_section}>
+            {
+                wishList?.includes(component._id) ? <FaHeartCircleMinus className={styles.addToWishList} onClick={() => removeFromWishlist(component._id)} style={{ color: 'red' }} /> : <FaHeartCirclePlus className={styles.addToWishList} onClick={() => addtoWishlist(component._id)}/>
+            }
             <div className={styles.card_container}>
                 <Image className={styles.featured_image} src={component?.image} width={100} height={100} alt={component?.image} layout="responsive" />
                 <div className={styles.product_info}>

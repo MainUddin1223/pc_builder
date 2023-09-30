@@ -1,6 +1,7 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { IComponent } from "../../types/types";
 
+
 const initialState: IComponent = {
   cartComponents: [],
   count: 0,
@@ -21,18 +22,6 @@ export const pcBuilderSlice = createSlice({
       }
       state.count += 1;
     },
-    // addByQuantity: (state, action) => {
-    //   state.count+=1
-    //    console.log(action.payload);
-    //   const existingComponent = state.components.find(
-    //     (component) => component._id === action.payload._id
-    //   );
-    //   if (existingComponent) {
-    //     existingComponent.quantity = existingComponent.quantity + action.payload.quantity;
-    //     state.count += action.payload.quantity;
-    //   }
-    // }
-    // ,
     removeFromCart: (state, action) => {
       const isExisting = state.cartComponents.find(
         (component) => component._id === action.payload._id

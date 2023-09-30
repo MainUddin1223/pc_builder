@@ -1,7 +1,7 @@
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { ImStarFull, ImStarHalf } from 'react-icons/im';
 import RootLayout from "../../components/Layout/RootLayout";
 import { addToBuilder } from "../../redux/features/pcBuilderSlice";
@@ -13,8 +13,36 @@ const rootUrl = process.env.SERVER_URL
 
 const ProductDetails = ({ details }: IDetailProps) => {
   const dispatch = useAppDispatch()
-  const router = useRouter()
-const [overview,setOverview] = useState('overview')
+  const router = useRouter();
+  const [overview, setOverview] = useState('overview');
+  const [isWishlisted, setIsWishlisted] = useState<boolean>(false)
+  const storedData = localStorage.getItem('wishlist') as string
+  const data = JSON.parse(storedData);
+  
+  useEffect(() => {
+    if (data && data.includes(details._id)) {
+      setIsWishlisted(true)
+    }
+  },[])
+
+  const setWishlist = (id: string) => {
+    if (data) {
+      const isIdExist = data.includes(id);
+      if (isIdExist) {
+        const removedItem = data.filter((productId: string) => productId !== id)
+        setIsWishlisted(false)
+        localStorage.setItem('wishlist',JSON.stringify(removedItem));
+      } else {
+        localStorage.setItem('wishlist', JSON.stringify([...data, id]));
+        setIsWishlisted(true)
+      }
+    } else {
+      localStorage.setItem('wishlist', JSON.stringify([id]));
+      setIsWishlisted(true)
+    }
+  }
+
+  
 
   return (
     <div className={styles.product_details_container}>
@@ -38,7 +66,10 @@ const [overview,setOverview] = useState('overview')
           </div>
           <p style={{margin:"10px 0",fontWeight:"bold"}}>Price: {details?.price} $</p>
         </div>
-        <p className={styles.status}>{details?.status}</p>
+        <p >{details?.status}</p>
+        <p className={styles.wishlist} onClick={() => setWishlist(details._id)}>{
+          isWishlisted?'Remove':'Add to wishlist'
+        }</p>
           <p style={{ margin: "10px 0", fontWeight: "bold" }}>Category: <span style={{ textTransform: "uppercase" }}>{details?.category}</span></p>
         <div>
           <div className={styles.overview_section}>

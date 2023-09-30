@@ -15,8 +15,9 @@ const LoginPage = () => {
   
   useEffect(() => {
     const token = localStorage.getItem('token');
+    const wishList = localStorage.getItem('wishlist')
     if (!token) {
-        getAuthData()
+      getAuthData(wishList);
       }
     if (token) {
       router.back()
@@ -24,16 +25,16 @@ const LoginPage = () => {
   }, [status])
   
   //get token and verify user from server
-  const getAuthData = () => {
+  const getAuthData = async (wishList:any) => {
     if (status === 'authenticated') {
       const option = {
         method: "POST",
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ email: session?.user?.email, name: session?.user?.name })
+        body: JSON.stringify({ email: session?.user?.email, name: session?.user?.name, wishList: wishList })
       };
-      fetch(`${rootUrl}/auth`, option)
+      await fetch(`${rootUrl}/auth`, option)
         .then(data => data.json())
         .then(res => {
           if (typeof window !== 'undefined') {

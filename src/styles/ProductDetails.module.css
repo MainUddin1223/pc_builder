@@ -40,13 +40,14 @@
   align-items: center;
   margin: 10px 0;
 }
-.status {
+.wishlist {
   background-color: var(--secondary-color);
   display: inline-block;
   padding: 5px 15px;
   font-weight: bold;
   color: white;
   margin: 15px 0;
+  cursor: pointer;
 }
 .overview_section {
   display: flex;

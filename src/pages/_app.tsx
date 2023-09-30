@@ -8,6 +8,7 @@ import type { AppProps } from 'next/app';
 import { useRouter } from 'next/router';
 import { useEffect, useState } from 'react';
 import { Provider } from 'react-redux';
+import { persistStore } from 'redux-persist';
 
 type PageWithLayout<P = {}> = NextPage<P> & {
   getLayout?: (page: React.ReactNode) => React.ReactNode;
@@ -40,14 +41,18 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [Router]);
 
   const getLayout = (Component as PageWithLayout).getLayout || ((page: React.ReactNode) => page);
-  
+  const persistor = persistStore(store)
+
+
   return (
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
+      {/* <PersistGate persistor={persistor}>
+      </PersistGate> */}
         {isLoading && <Loading/>}
         {getLayout(<Component {...pageProps} />)}
         <Messenger/>
-      </SessionProvider>
+        </SessionProvider>
       </Provider>
   );
 }
