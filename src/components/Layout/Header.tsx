@@ -1,16 +1,16 @@
 import { useAppSelector } from '@/redux/hooks';
 import styles from '@/styles/RootLayout.module.css';
-import { useSession } from "next-auth/react";
+import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { BsArrowsAngleContract, BsArrowsAngleExpand } from 'react-icons/bs';
+import { BsArrowsAngleContract, BsArrowsAngleExpand, BsFillBox2HeartFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaCartArrowDown, FaHome } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GrClose } from 'react-icons/gr';
 
-interface IHeaderProps{
+interface IHeaderProps {
     isDropdown: boolean;
     setIsDropdown: React.Dispatch<React.SetStateAction<boolean>>;
 }
@@ -18,7 +18,7 @@ interface IHeaderProps{
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const { count } = useAppSelector(state => state.cartComponents);
     const [isProfileDropdpwn, setIsProfileDropdown] = useState(false);
-    const [isCategoryDropdown,setIsCategorydropdown] = useState(false)
+    const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
     const router = useRouter()
     const { data: session } = useSession();
     return (
@@ -56,12 +56,12 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                         <div className={styles.categories_container}>
                             <li className={`${styles.nav_item} ${styles.category_wrapper}`} onClick={() => setIsCategorydropdown(!isCategoryDropdown)}>
                                 <span>
-                                    Categories 
+                                    Components
                                 </span>
                                 <span className={styles.expand_arrow}>
                                     {
-                                    isCategoryDropdown ? <BsArrowsAngleExpand /> :
-                                    <BsArrowsAngleContract />
+                                        isCategoryDropdown ? <BsArrowsAngleExpand /> :
+                                            <BsArrowsAngleContract />
                                     }
                                 </span>
                             </li>
@@ -96,6 +96,13 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                         }}>
                             <li className={styles.nav_item}>Build pc </li>
                         </Link>
+                        <li>Orders</li>
+                        <li>History</li>
+                        <div className={styles.cart}>
+                            <Link href='/pc_builder'>
+                                <li><BsFillBox2HeartFill /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
+                            </Link>
+                        </div>
                         <div className={styles.cart}>
                             <Link href='/pc_builder'>
                                 <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
@@ -117,22 +124,30 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                                                 </span>
                                             </span>
                                             {isProfileDropdpwn && <div className={styles.profile_list}>
-                                                <ul>profile</ul>
+                                                <ul
+                                                    onClick={() => {
+                                                        router.push('/profile'),
+                                                            setIsProfileDropdown(!isProfileDropdpwn)
+
+                                                    }}
+                                                >profile</ul>
                                                 <ul>history</ul>
                                                 <ul>wishlist</ul>
-                                                <ul>logout</ul>
+                                                <ul
+                                                    onClick={() => { signOut(), localStorage.clear(), setIsDropdown(false) }}
+                                                >logout</ul>
                                             </div>}
 
-                                        </span>:
+                                        </span> :
                                         <CgProfile />
                                 }
                                 {/* <Image src={session?.user?.image } height={300} width={300} layout='responsive'/> */}
-                        </li>
+                            </li>
                         ) : (
                             <Link href='/login' onClick={() => {
                                 setIsDropdown(false);
                             }}>
-                                    <li><CgProfile/></li>
+                                <li><CgProfile /></li>
                             </Link>
                         )}
                     </ul>
