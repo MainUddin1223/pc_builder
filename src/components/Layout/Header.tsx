@@ -4,11 +4,13 @@ import { signOut, useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
 import { useState } from 'react';
-import { BsArrowsAngleContract, BsArrowsAngleExpand, BsFillBox2HeartFill } from 'react-icons/bs';
+import { BsFillBox2HeartFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaCartArrowDown, FaHome } from 'react-icons/fa';
 import { GiHamburgerMenu } from 'react-icons/gi';
 import { GrClose } from 'react-icons/gr';
+import { LuLogOut } from 'react-icons/lu';
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl';
 
 interface IHeaderProps {
     isDropdown: boolean;
@@ -47,11 +49,32 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             <FaHome onClick={async () => {
                                 await router.push('/');
                                 setIsDropdown(false)
-                            }} />
+                            }}
+                            style={{fontSize:"25px"}}
+                            />
                             <GrClose onClick={() => {
                                 setIsDropdown(false);
                             }}
                             />
+                        </div>
+                        <div className={styles.mobile_profile}>
+                            {
+                                session?.user?.image ?
+                                    <>
+                                        <span>
+                                            <img src={session?.user?.image} alt="img" className={styles.profile_img_mobile} />
+                                            <p style={{ padding: "10px" }}>{session?.user?.name}</p>
+                                            <hr style={{margin:'10px'}}/>
+                                        </span>
+                                    </> :
+                                    <div className={styles.mobile_login_section}>
+                                        <CgProfile style={{ fontSize: "45px" }} />
+                                        <button onClick={() => {
+                                            router.push('/login'),
+                                                setIsDropdown(false)
+                                        }}>Login</button>
+                                    </div>
+                            }
                         </div>
                         <div className={styles.categories_container}>
                             <li className={`${styles.nav_item} ${styles.category_wrapper}`} onClick={() => setIsCategorydropdown(!isCategoryDropdown)}>
@@ -60,8 +83,8 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                                 </span>
                                 <span className={styles.expand_arrow}>
                                     {
-                                        isCategoryDropdown ? <BsArrowsAngleExpand /> :
-                                            <BsArrowsAngleContract />
+                                        isCategoryDropdown ? <SlArrowUp /> :
+                                            <SlArrowDown />
                                     }
                                 </span>
                             </li>
@@ -108,48 +131,35 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                                 <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
                             </Link>
                         </div>
-                        {session?.user ? (
-                            // <li onClick={() => { signOut(),localStorage.clear(), setIsDropdown(false) }} >Logout</li>
-                            <li>
-                                {
-                                    session?.user?.image ?
-                                        <span>
-                                            <span className={styles.category_wrapper} onClick={() => setIsProfileDropdown(!isProfileDropdpwn)}>
-                                                <img src={session?.user?.image} alt="img" className={styles.profile_img} />
-                                                <span className={styles.expand_arrow}>
-                                                    {
-                                                        isProfileDropdpwn ? <BsArrowsAngleExpand /> :
-                                                            <BsArrowsAngleContract />
-                                                    }
-                                                </span>
-                                            </span>
-                                            {isProfileDropdpwn && <div className={styles.profile_list}>
-                                                <ul
-                                                    onClick={() => {
-                                                        router.push('/profile'),
-                                                            setIsProfileDropdown(!isProfileDropdpwn)
-
-                                                    }}
-                                                >profile</ul>
-                                                <ul>history</ul>
-                                                <ul>wishlist</ul>
-                                                <ul
-                                                    onClick={() => { signOut(), localStorage.clear(), setIsDropdown(false) }}
-                                                >logout</ul>
-                                            </div>}
-
-                                        </span> :
-                                        <CgProfile />
-                                }
-                                {/* <Image src={session?.user?.image } height={300} width={300} layout='responsive'/> */}
-                            </li>
-                        ) : (
-                            <Link href='/login' onClick={() => {
-                                setIsDropdown(false);
-                            }}>
-                                <li><CgProfile /></li>
-                            </Link>
-                        )}
+                        <div className={styles.profile_mobile}>
+                            {session?.user ? (
+                                <li>
+                                    <span>
+                                        {
+                                            session?.user?.image ?
+                                                <>
+                                                    <span>
+                                                        <span className={styles.category_wrapper} onClick={() => setIsProfileDropdown(!isProfileDropdpwn)}>
+                                                            <img src={session?.user?.image} alt="img" className={styles.profile_img} />
+                                                        </span>
+                                                    </span>
+                                                </> :
+                                                <CgProfile />
+                                        }
+                                    </span>
+                                    {/* <Image src={session?.user?.image } height={300} width={300} layout='responsive'/> */}
+                                </li>
+                            ) : (
+                                <Link href='/login' onClick={() => {
+                                    setIsDropdown(false);
+                                }}>
+                                    <li><CgProfile /></li>
+                                </Link>
+                            )}
+                        </div>
+                        {
+                            session?.user && <LuLogOut className={styles.logout} onClick={()=>signOut() } />
+                        }
                     </ul>
                 </div>
             </div>
@@ -157,9 +167,14 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                 onClick={() => setIsDropdown(!isDropdown)}
             />
             <div className={styles.responsive_cart}>
-                <Link href='/pc_builder'>
-                    <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
-                </Link>
+                <span style={{display:"flex",gap:'10px'}}>
+                    {session?.user && <Link href='/pc_builder'>
+                        <li><BsFillBox2HeartFill /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
+                    </Link>}
+                    <Link href='/pc_builder'>
+                        <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
+                    </Link>
+            </span>
             </div>
         </nav>
     )
