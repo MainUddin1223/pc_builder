@@ -1,3 +1,4 @@
+import Messenger from '@/components/MessengerChat';
 import Loading from '@/components/loading';
 import store from '@/redux/store';
 import '@/styles/globals.css';
@@ -44,7 +45,8 @@ export default function App({ Component, pageProps }: AppProps) {
     <Provider store={store}>
       <SessionProvider session={pageProps.session}>
         {isLoading && <Loading/>}
-          {getLayout(<Component {...pageProps} />)}
+        {getLayout(<Component {...pageProps} />)}
+        <Messenger/>
       </SessionProvider>
       </Provider>
   );

@@ -158,7 +158,10 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             )}
                         </div>
                         {
-                            session?.user && <LuLogOut className={styles.logout} onClick={()=>signOut() } />
+                            session?.user && <LuLogOut className={styles.logout} onClick={() => {
+                                signOut(),
+                                    localStorage.clear()
+                            }} />
                         }
                     </ul>
                 </div>
