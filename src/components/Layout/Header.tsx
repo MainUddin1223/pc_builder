@@ -18,7 +18,7 @@ interface IHeaderProps {
 }
 
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
-    const { count } = useAppSelector(state => state.cartComponents);
+    const { count,wishlist } = useAppSelector(state => state.cartComponents);
     const [isProfileDropdpwn, setIsProfileDropdown] = useState(false);
     const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
     const router = useRouter()
@@ -172,9 +172,9 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
             />
             <div className={styles.responsive_cart}>
                 <span style={{display:"flex",gap:'10px'}}>
-                    {session?.user && <Link href='/pc_builder'>
-                        <li><BsFillBox2HeartFill /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
-                    </Link>}
+                    <Link href='/pc_builder'>
+                        <li><BsFillBox2HeartFill /> {wishlist.length > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{wishlist.length}</span>}</li>
+                    </Link>
                     <Link href='/pc_builder'>
                         <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
                     </Link>

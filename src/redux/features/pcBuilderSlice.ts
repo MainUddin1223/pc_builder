@@ -5,6 +5,7 @@ import { IComponent } from "../../types/types";
 const initialState: IComponent = {
   cartComponents: [],
   count: 0,
+  wishlist:[]
 };
 
 export const pcBuilderSlice = createSlice({
@@ -40,11 +41,30 @@ export const pcBuilderSlice = createSlice({
       state.cartComponents = [];
       state.count = 0;
     },
+    addToWishlist: (state, action) => {
+      const isExist = state.wishlist.includes(action.payload);
+      if (isExist) {
+        state.wishlist = state.wishlist.filter((id) => id !== action.payload);
+      } else {
+        state.wishlist.push(action.payload)
+      }
+    },
+    removeFromWishlist: (state, action) => {
+      const isExist = state.wishlist.includes(action.payload);
+      if (isExist) {
+        state.wishlist = state.wishlist.filter((id)=>id!==action.payload)
+      }
+    }
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { addToBuilder, resetComponent, removeFromCart } =
-  pcBuilderSlice.actions;
+export const {
+  addToBuilder,
+  resetComponent,
+  removeFromCart,
+  addToWishlist,
+  removeFromWishlist,
+} = pcBuilderSlice.actions;
 
 export default pcBuilderSlice.reducer;

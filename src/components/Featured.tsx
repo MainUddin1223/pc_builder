@@ -1,4 +1,4 @@
-import { addToBuilder, removeFromCart } from "@/redux/features/pcBuilderSlice";
+import { addToBuilder, addToWishlist, removeFromCart, removeFromWishlist } from "@/redux/features/pcBuilderSlice";
 import { useAppDispatch, useAppSelector } from "@/redux/hooks";
 import { Details, PcComponent } from "@/types/types";
 import Image from "next/image";
@@ -12,41 +12,18 @@ const Featured = ({component}:PcComponent) => {
     const dispatch = useAppDispatch();
     const { cartComponents } = useAppSelector(state => state.cartComponents);
     const [addedComponent, setAddedComponent] = useState<Details | undefined>(undefined);
-    const [wishList, setWishlist] = useState<string[]>([])
+
+
+    const {wishlist} = useAppSelector(state=>state.cartComponents)
 
     useEffect(() => {
         setAddedComponent(cartComponents?.find((card) => card?._id === component?._id))
-    }, [cartComponents]);
-
-    useEffect(() => {
-        const storedData = localStorage.getItem('wishlist') as string
-        const data = JSON.parse(storedData);
-        setWishlist(data)
-    },[])
-    
-    const addtoWishlist = (id: string) => {
-        if (wishList) {
-            const isIdExist = wishList.includes(id);
-            if (!isIdExist) {
-                setWishlist([...wishList,id])
-                localStorage.setItem('wishlist', JSON.stringify([...wishList, id]));
-            }
-        }
-        else {
-            setWishlist([id])
-            localStorage.setItem('wishlist', JSON.stringify([id]));
-        }
-    }
-
-    const removeFromWishlist = (id:string) => {
-        const removedItem = wishList.filter(productId => productId !== id)
-        setWishlist(removedItem)
-    }
+    }, [cartComponents])
 
     return (
         <div className={styles.featured_section}>
             {
-                wishList?.includes(component._id) ? <FaHeartCircleMinus className={styles.addToWishList} onClick={() => removeFromWishlist(component._id)} style={{ color: 'red' }} /> : <FaHeartCirclePlus className={styles.addToWishList} onClick={() => addtoWishlist(component._id)}/>
+                wishlist?.includes(component._id) ? <FaHeartCircleMinus className={styles.addToWishList} onClick={() => dispatch(removeFromWishlist(component._id))} style={{ color: 'red' }} /> : <FaHeartCirclePlus className={styles.addToWishList} onClick={() => dispatch(addToWishlist(component._id))} />
             }
             <div className={styles.card_container}>
                 <Image className={styles.featured_image} src={component?.image} width={100} height={100} alt={component?.image} layout="responsive" />

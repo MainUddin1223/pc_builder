@@ -44,4 +44,5 @@ export interface Props {
 export interface IComponent {
   cartComponents: Details[];
   count: number;
+  wishlist:string[]
 }

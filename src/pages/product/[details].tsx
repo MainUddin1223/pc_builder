@@ -1,11 +1,11 @@
 import { GetStaticPropsContext } from "next";
 import Image from "next/image";
 import { useRouter } from "next/router";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { ImStarFull, ImStarHalf } from 'react-icons/im';
 import RootLayout from "../../components/Layout/RootLayout";
-import { addToBuilder } from "../../redux/features/pcBuilderSlice";
-import { useAppDispatch } from "../../redux/hooks";
+import { addToBuilder, addToWishlist } from "../../redux/features/pcBuilderSlice";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
 import styles from '../../styles/ProductDetails.module.css';
 import { Details, IDetailProps } from "../../types/types";
 const rootUrl = process.env.SERVER_URL
@@ -15,35 +15,7 @@ const ProductDetails = ({ details }: IDetailProps) => {
   const dispatch = useAppDispatch()
   const router = useRouter();
   const [overview, setOverview] = useState('overview');
-  const [isWishlisted, setIsWishlisted] = useState<boolean>(false)
-  const storedData = localStorage.getItem('wishlist') as string
-  const data = JSON.parse(storedData);
-  
-  useEffect(() => {
-    if (data && data.includes(details._id)) {
-      setIsWishlisted(true)
-    }
-  },[])
-
-  const setWishlist = (id: string) => {
-    if (data) {
-      const isIdExist = data.includes(id);
-      if (isIdExist) {
-        const removedItem = data.filter((productId: string) => productId !== id)
-        setIsWishlisted(false)
-        localStorage.setItem('wishlist',JSON.stringify(removedItem));
-      } else {
-        localStorage.setItem('wishlist', JSON.stringify([...data, id]));
-        setIsWishlisted(true)
-      }
-    } else {
-      localStorage.setItem('wishlist', JSON.stringify([id]));
-      setIsWishlisted(true)
-    }
-  }
-
-  
-
+  const {wishlist} = useAppSelector(state=>state.cartComponents)
   return (
     <div className={styles.product_details_container}>
       <div className={styles.details_img_container}>
@@ -67,8 +39,8 @@ const ProductDetails = ({ details }: IDetailProps) => {
           <p style={{margin:"10px 0",fontWeight:"bold"}}>Price: {details?.price} $</p>
         </div>
         <p >{details?.status}</p>
-        <p className={styles.wishlist} onClick={() => setWishlist(details._id)}>{
-          isWishlisted?'Remove':'Add to wishlist'
+        <p className={styles.wishlist} onClick={() => dispatch(addToWishlist((details._id)))}>{
+          wishlist.includes(details._id)?'Remove':'Add to wishlist'
         }</p>
           <p style={{ margin: "10px 0", fontWeight: "bold" }}>Category: <span style={{ textTransform: "uppercase" }}>{details?.category}</span></p>
         <div>
