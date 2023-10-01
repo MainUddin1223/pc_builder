@@ -23,6 +23,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
     const router = useRouter()
     const { data: session } = useSession();
+    console.log(wishlist)
     return (
         <nav className={`${styles.nav_section} ${styles.navClassList}`}>
             {isDropdown && (
@@ -123,7 +124,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                         <li>History</li>
                         <div className={styles.cart}>
                             <Link href='/pc_builder'>
-                                <li><BsFillBox2HeartFill /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
+                                <li><BsFillBox2HeartFill /> {wishlist.length > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{wishlist.length}</span>}</li>
                             </Link>
                         </div>
                         <div className={styles.cart}>

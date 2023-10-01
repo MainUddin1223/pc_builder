@@ -1,20 +1,15 @@
+import Category from '@/components/category'
 import styles from '@/styles/PcBuilder.module.css'
-import { Details, ICategories } from "@/types/types"
+import { ICategories } from "@/types/types"
 import Head from "next/head"
-import { useRouter } from "next/router"
-import Swal from "sweetalert2"
+import { useState } from 'react'
 import RootLayout from "../components/Layout/RootLayout"
-import PcComponentCard from "../components/pcCopmonent"
-import { resetComponent } from "../redux/features/pcBuilderSlice"
-import { useAppDispatch, useAppSelector } from "../redux/hooks"
 
 const rootUrl = process.env.SERVER_URL
 
 
 const PcBuilder = ({ categories }: ICategories) => {
-  const router = useRouter();
-  const dispatch = useAppDispatch()
-  const { cartComponents, count } = useAppSelector(state => state.cartComponents);
+  const [category,setCategory] = useState('all components')
   return (
     <>
       <Head>
@@ -30,34 +25,13 @@ const PcBuilder = ({ categories }: ICategories) => {
         <div className={styles.categories_conatiner}>
           {
             categories.map((category: string) => (
-              <div key={category} className={styles.category_container} >
+              <div key={category} className={styles.category_container} onClick={() => setCategory(category)} >
                 <p>{category}</p>
-                <button className={styles.category_button} onClick={() => router.push(`/component/${category}`)}>Select</button>
               </div>
             ))
           }
         </div>
-        {
-          count >= 1 ? <div className={styles.builder_card_container}>
-            <div className={styles.builder_card}>
-              {
-                cartComponents.map((card: Details) => (
-                  <PcComponentCard component={card} key={card._id} />
-                ))
-              }
-            </div>
-            <button className={`${styles.complete_button} ${count < 5 && styles.complete_button_disabled}`} onClick={() => {
-              Swal.fire('Congratulations!!',
-                "Your PC has been successfully built")
-              dispatch(resetComponent())
-              router.push('/')
-            }}>Complete build</button>
-          </div> :
-            <div className={styles.empty_builder}>
-              <h1>Pc building yet to start</h1>
-              <p>Select the components and make your dream pc</p>
-            </div>
-        }
+        <Category categoryType={category} />
 
       </div>
     </>
@@ -81,6 +55,7 @@ export const getServerSideProps = async () => {
   // }
   const res = await fetch(`${rootUrl}/components/category`);
   const data = await res.json();
+  console.log(data.data)
   return {
     props: {
       categories: data.data,

@@ -26,6 +26,9 @@ export interface Details {
 export interface PcComponent{
     component:Details
 }
+export interface ComponentCategory {
+  categoryType:string
+}
 export interface PcComponents {
   components: Details;
 }

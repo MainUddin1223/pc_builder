@@ -53,6 +53,19 @@
   gap: 10px;
 }
 
+.see_more_btn {
+  display: block;
+  margin: 10px auto;
+  padding: 10px 20px;
+  cursor: pointer;
+  color: white;
+  background-color: var(--secondary-color);
+  font-size: 18px;
+  transition: 0.5s ease-in-out;
+}
+.see_more_btn:hover {
+  box-shadow: 0 2px 4px rgba(153, 152, 152, 0.2);
+}
 .categories_container {
   margin: 50px auto;
   display: flex;

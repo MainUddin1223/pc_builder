@@ -5,6 +5,7 @@ import { Inter } from 'next/font/google';
 import Head from 'next/head';
 import Image from 'next/image';
 import Link from 'next/link';
+import { useRouter } from 'next/router';
 import { BsDeviceSsdFill, BsMotherboardFill } from 'react-icons/bs';
 import { CgSmartphoneRam } from 'react-icons/cg';
 import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
@@ -18,9 +19,9 @@ import { Details, PcComponents } from '../types/types';
 const Featured = dynamic(() => import('@/components/Featured'))
 
 const inter = Inter({ subsets: ['latin'] });
-
 const rootUrl = process.env.SERVER_URL
 const Home = ({ components }: PcComponents) => {
+  const router = useRouter()
 
   return (
     <>
@@ -48,6 +49,7 @@ const Home = ({ components }: PcComponents) => {
           <Featured component={component} key={component._id} />
         ))}
       </div>
+      <button className={styles.see_more_btn} onClick={() => router.push('/pc_builder')}>See more</button>
       <div style={{ margin: "10px 0" }} >
         <Image src={banner} alt="banner" layout="responsive" />
       </div>

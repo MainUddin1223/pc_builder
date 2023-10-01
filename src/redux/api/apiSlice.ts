@@ -1,7 +1,8 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
-
 export const api = createApi({
   reducerPath: "api",
-    baseQuery: fetchBaseQuery({ baseUrl: process.env.SERVER_URL }),
-    endpoints:()=>({})
+  baseQuery: fetchBaseQuery({
+    baseUrl: "https://pc-builder-server-pearl.vercel.app/api/v1",
+  }),
+  endpoints: () => ({}),
 });
