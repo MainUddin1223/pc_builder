@@ -47,7 +47,15 @@ const Cart = () => {
                                     <li key={compo._id} className={styles.product_detail_container}>
                                         <Image src={compo.image} width={50} height={50} alt={compo.productName} className={ styles.product_img} />
                                         <div className={styles.product_details}>
-                                                <h3 className={styles.product_detail_header}>{compo.productName}</h3>
+                                            <h3 className={styles.product_detail_header}>
+   
+                                                    {
+                                                        compo.productName.length > 15 ?
+                                                        compo.productName.slice(0, 22)  + ' ...'
+                                                        : compo.productName
+                                                    }
+                                            
+                                            </h3>
                                             <p>{compo.price}</p>
                                             <div className={styles.product_quantity}>
                                                 <button onClick={() => {
@@ -67,8 +75,40 @@ const Cart = () => {
                             }
                         </ul>
                     </div>
-                    <div>
-                        <h2>Summary</h2>
+                    <div className={styles.summary_section}>
+                        <h3>Summary</h3>
+                        <hr style={{margin:'20px'}}/>
+                        <div className={styles.summary_container}>
+                            <div className={styles.summary_titles}>
+                                <p>Items</p>
+                                <p>Sub-total</p>
+                                <p>Coupon</p>
+                                <p>Discount</p>
+                                <p>Shipping</p>
+                                <p>Total</p>
+                            </div>
+                            <div className={styles.summary_titles}>
+                                <p>{count }</p>
+                                <p>$ { `5000`}</p>
+                                <input type="text" style={{width:"100px"}}/>
+                                <p>$ 50</p>
+                                <p>$ 50</p>
+                                <p>$ 10000</p>
+                            </div>
+                        </div>
+                        <hr style={{ margin: '20px' }} />
+                        <div className={styles.summary_container}>
+                            <div className={styles.summary_titles}>
+                                <p>Total</p>
+                            </div>
+                            <div className={styles.summary_titles}>
+                                <p style={{ width: "100px" }}>$ 10000</p>
+                            </div>
+                        </div>
+                        <div className={styles.summary_btn_group}>
+                            <button onClick={()=>router.push('/pc_builder')}>Shop more</button>
+                            <button>Checkout</button>
+                       </div>
                     </div>
                </div>
             </div>
