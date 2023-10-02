@@ -5,6 +5,7 @@ import Image from "next/image";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import { FaHeartCircleMinus, FaHeartCirclePlus } from 'react-icons/fa6';
+import { ImStarFull, ImStarHalf } from 'react-icons/im';
 import styles from '../styles/Featured.module.css';
 
 const Featured = ({component}:PcComponent) => {
@@ -27,13 +28,23 @@ const Featured = ({component}:PcComponent) => {
             }
             <div className={styles.card_container}>
                 <Image className={styles.featured_image} src={component?.image} width={100} height={100} alt={component?.image} layout="responsive" />
+                <hr  style={{margin:"10px",color:"gray"}}/>
                 <div className={styles.product_info}>
                     <div className={styles.product_details}>
-                        <h3>{component?.productName}</h3>
-                        <p><span style={{fontWeight:"bold"}}>Category :</span> {component?.category}</p>
-                        <p><span style={{ fontWeight: "bold" }}>Price : </span>{component?.price}</p>
-                        <p><span style={{ fontWeight: "bold" }}>Status : </span>{component?.status}</p>
-                        <p><span style={{ fontWeight: "bold" }}>Rating :</span> {component?.averageRating}</p>
+                        <p>{component?.productName}</p>
+                        <p >Price : $ {component?.price}</p>
+                        <p>{component?.status}</p>
+                        <div className={styles.avarage_rating}>
+                            {Array(Math.ceil(component?.averageRating))
+                                .fill(null)
+                                .map((_, index) => (
+                                    component?.averageRating > index + 1 ? (
+                                        <ImStarFull key={index} style={{ color: 'rgb(13, 202, 231)' }} />
+                                    ) : (
+                                        <ImStarHalf key={index} style={{ color: 'rgb(13, 202, 231)' }} />
+                                    )
+                                ))}
+                        </div>
                     </div>
                 </div>
             </div>

@@ -143,6 +143,8 @@
 .logout:hover {
   color: gray;
 }
+/* Styles for Extra Small devices */
+
 @media (min-width: 993px) {
   .mobile_profile {
     display: none;
@@ -278,4 +280,10 @@
 .footer_section h5 {
   text-transform: uppercase;
   padding: 5px;
+}
+
+@media (max-width: 576px) {
+  .nav_list_container {
+    width: 75%;
+  }
 }

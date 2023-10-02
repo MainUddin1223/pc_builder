@@ -3,12 +3,14 @@ import styles from '@/styles/PcBuilder.module.css'
 import { ICategories } from "@/types/types"
 import Head from "next/head"
 import { useState } from 'react'
+import { SlArrowDown, SlArrowUp } from 'react-icons/sl'
 import RootLayout from "../components/Layout/RootLayout"
 
 const rootUrl = process.env.SERVER_URL
 
 
 const PcBuilder = ({ categories }: ICategories) => {
+  const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
   const [category,setCategory] = useState('all components')
   return (
     <>
@@ -21,16 +23,31 @@ const PcBuilder = ({ categories }: ICategories) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <div>
-        <div className={styles.categories_conatiner}>
-          {
-            categories.map((category: string) => (
-              <div key={category} className={styles.category_container} onClick={() => setCategory(category)} >
-                <p>{category}</p>
-              </div>
-            ))
-          }
-        </div>
+      <div >
+        <div className={styles.category_section}>
+            <li onClick={() => setIsCategorydropdown(!isCategoryDropdown)}>
+              <span className={styles.category_choose_option}>
+                <p>Choose category</p>
+                {
+                  isCategoryDropdown ? <SlArrowUp /> :
+                    <SlArrowDown />
+                }
+              </span>
+            </li>
+
+          <div className={`${styles.categories_conatiner} ${isCategoryDropdown && styles.show_categories }`}>
+            {
+              categories.map((category: string) => (
+                <div key={category} className={styles.category_container} onClick={() => {
+                  setCategory(category)
+                  setIsCategorydropdown(false)
+                }} >
+                  <p>{category}</p>
+                </div>
+              ))
+            }
+          </div>
+       </div>
         <Category categoryType={category} />
 
       </div>

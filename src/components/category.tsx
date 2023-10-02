@@ -8,7 +8,6 @@ import Featured from "./Featured";
 const Category = ({ categoryType }: ComponentCategory) => {
     const router = useRouter()
     const { data } = useGetComponentsQuery(categoryType);
-    console.log(data)
     return (
         <div className={styles.category_container}>
             <div className={styles.category_header_container}>

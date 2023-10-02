@@ -23,7 +23,6 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
     const router = useRouter()
     const { data: session } = useSession();
-    console.log(wishlist)
     return (
         <nav className={`${styles.nav_section} ${styles.navClassList}`}>
             {isDropdown && (
