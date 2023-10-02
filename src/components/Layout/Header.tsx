@@ -176,7 +176,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                     <Link href='/pc_builder'>
                         <li><BsFillBox2HeartFill /> {wishlist.length > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{wishlist.length}</span>}</li>
                     </Link>
-                    <Link href='/pc_builder'>
+                    <Link href='/cart'>
                         <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
                     </Link>
             </span>

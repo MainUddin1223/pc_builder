@@ -75,6 +75,7 @@
   cursor: pointer;
   right: -5px;
   top: -5px;
+  color: red;
 }
 .summary_section h3 {
   text-align: center;
@@ -107,4 +108,65 @@
 }
 .summary_btn_group button:hover {
   box-shadow: 0 4px 8px rgba(252, 252, 252, 0.1);
+}
+
+/* Styles for Extra Small devices */
+@media (max-width: 576px) {
+  .product_details_header {
+    font-size: 12px;
+  }
+  .product_details h3 {
+    font-weight: 600;
+    font-size: 10px;
+  }
+  .product_quantity {
+    gap: 2px;
+  }
+  .product_quantity input {
+    width: 25px;
+  }
+  .product_quantity button {
+    padding: 3px 6px;
+  }
+}
+
+/* Styles for Small devices */
+@media (max-width: 767px) {
+  .cart_container {
+    display: block;
+    margin: 0 auto;
+  }
+  .item_container {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .summary_section {
+    width: 95%;
+    margin: 30px auto;
+  }
+  .product_img {
+    left: 0;
+  }
+  .product_details {
+    font-weight: lighter;
+    font-size: 12px;
+  }
+}
+@media (max-width: 576px) {
+  /* Add your CSS rules here */
+}
+/* Styles for Medium devices */
+@media (min-width: 768px) and (max-width: 992px) {
+  .cart_container {
+    gap: 10px;
+  }
+  .item_container {
+    margin: 10px;
+  }
+  .summary_section {
+    margin: 10px;
+  }
+  .product_img {
+    left: 5px;
+  }
 }

@@ -51,12 +51,12 @@ const Cart = () => {
    
                                                     {
                                                         compo.productName.length > 15 ?
-                                                        compo.productName.slice(0, 22)  + ' ...'
+                                                        compo.productName.slice(0, 15)  + ' ...'
                                                         : compo.productName
                                                     }
                                             
                                             </h3>
-                                            <p>{compo.price}</p>
+                                            <p>$ {compo.price}</p>
                                             <div className={styles.product_quantity}>
                                                 <button onClick={() => {
                                                     dispatch(removeFromCart(compo))
@@ -67,7 +67,7 @@ const Cart = () => {
                                                 <input value={compo?.quantity} />
                                                 <button onClick={() => dispatch(addToBuilder(compo))}>+</button>
                                             </div>
-                                            <p>{(compo.price * compo?.quantity!).toFixed(2)}</p>
+                                            <p>$ {(compo.price * compo?.quantity!).toFixed(2)}</p>
                                         </div>
                                         <AiOutlineCloseCircle className={styles.remove_icon} onClick={() => haandleDropFromCart(compo) } />
                                     </li>
