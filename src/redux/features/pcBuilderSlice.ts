@@ -37,6 +37,13 @@ export const pcBuilderSlice = createSlice({
         state.count -= 1;
       }
     },
+    dropFromCart: (state, action) => {
+       state.cartComponents = state.cartComponents.filter(
+         (component) => component._id !== action.payload._id
+      );
+      state.count -= action.payload.quantity;
+    }
+    ,
     resetComponent: (state) => {
       state.cartComponents = [];
       state.count = 0;
@@ -63,6 +70,7 @@ export const {
   addToBuilder,
   resetComponent,
   removeFromCart,
+  dropFromCart,
   addToWishlist,
   removeFromWishlist,
 } = pcBuilderSlice.actions;

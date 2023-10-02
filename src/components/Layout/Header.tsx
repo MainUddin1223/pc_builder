@@ -128,7 +128,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                             </Link>
                         </div>
                         <div className={styles.cart}>
-                            <Link href='/pc_builder'>
+                            <Link href='/cart'>
                                 <li><FaCartArrowDown /> {count > 0 && <span className={styles.quantity} style={{ fontWeight: "bolder", marginTop: '-10px' }}>{count}</span>}</li>
                             </Link>
                         </div>

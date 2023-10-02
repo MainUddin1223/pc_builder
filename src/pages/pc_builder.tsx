@@ -55,7 +55,6 @@ export const getServerSideProps = async () => {
   // }
   const res = await fetch(`${rootUrl}/components/category`);
   const data = await res.json();
-  console.log(data.data)
   return {
     props: {
       categories: data.data,
