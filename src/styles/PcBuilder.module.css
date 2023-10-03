@@ -88,7 +88,7 @@
   .categories_conatiner {
     flex-direction: column;
     position: absolute;
-    background-color: rgba(11, 10, 10, 0.459);
+    background-color: rgba(11, 10, 10, 0.665);
     width: 100%;
     z-index: -99;
     transition: 0.8s ease-in-out;
