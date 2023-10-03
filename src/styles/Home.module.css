@@ -48,9 +48,9 @@
 }
 
 .cards_container {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
 }
 
 .see_more_btn {
