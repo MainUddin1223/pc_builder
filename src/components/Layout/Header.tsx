@@ -15,13 +15,12 @@ interface IHeaderProps {
 
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const { count,wishlist } = useAppSelector(state => state.cartComponents);
-    const [isProfileDropdpwn, setIsProfileDropdown] = useState(false);
-    const [isCategoryDropdown, setIsCategorydropdown] = useState(false)
+    const [isProfileDropdown, setIsProfileDropdown] = useState(false);
     const router = useRouter()
     const { data: session } = useSession();
+
     return (
         <nav className={`${styles.nav_section} ${styles.navClassList}`}>
-            {/* new design */}
             <div className={ `global_padding ${styles.nav_container_new}`}>
                 <h1 className={styles.logo_text} onClick={() => router.push('/')}>SunLink</h1>
                 <div className={styles.nav_icon_container}>
@@ -43,7 +42,7 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
                                         session?.user?.image ?
                                             <>
                                                 <span>
-                                                    <span className={styles.category_wrapper} onClick={() => setIsProfileDropdown(!isProfileDropdpwn)}>
+                                                    <span className={styles.category_wrapper} onClick={() => setIsProfileDropdown(!isProfileDropdown)}>
                                                         <img src={session?.user?.image} alt="img" className={styles.profile_img} />
                                                     </span>
                                                 </span>

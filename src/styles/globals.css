@@ -1,11 +1,8 @@
 :root {
-  --primary-color: rgb(106, 79, 79);
-  --secondary-color: rgb(0, 0, 0);
-  --header-text-color: rgb(119, 21, 21);
-  --primary-background-color: rgb(255, 255, 255);
-  --secondary-background-color: rgb(247, 240, 240);
-  --button-color: rgb(0, 0, 0);
-  --secondary-color-new: rgb(13, 202, 231);
+  --primary-color: #00abe4;
+  --secondary-color: #e7f0fa;
+  --accent-color: #f5faff;
+  --text-color: #1e365b;
 }
 
 * {
@@ -29,11 +26,18 @@ button {
 .global_padding_y {
   padding: 0px 20px;
 }
-
+.custom-scrollbar-hide::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+.custom-scrollbar-hide::-webkit-scrollbar-thumb {
+  background: transparent;
+}
 body {
   list-style: none;
   overflow-x: hidden;
   /* background: rgb(11, 11, 11); */
+  background-color: var(--accent-color);
 }
 ul {
   list-style: none;
