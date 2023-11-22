@@ -1,9 +1,11 @@
 :root {
-  --primary-color: rgb(20, 20, 20);
+  --primary-color: rgb(106, 79, 79);
   --secondary-color: rgb(0, 0, 0);
   --header-text-color: rgb(119, 21, 21);
   --primary-background-color: rgb(255, 255, 255);
   --secondary-background-color: rgb(247, 240, 240);
+  --button-color: rgb(0, 0, 0);
+  --secondary-color-new: rgb(13, 202, 231);
 }
 
 * {
@@ -11,6 +13,21 @@
   padding: 0;
   margin: 0;
   font-family: sans-serif;
+}
+button {
+  cursor: pointer;
+}
+.card {
+  padding: 5px;
+}
+.global_padding {
+  padding: 10px 20px;
+}
+.global_padding_x {
+  padding: 0px 20px;
+}
+.global_padding_y {
+  padding: 0px 20px;
 }
 
 body {
@@ -33,7 +50,15 @@ a {
 
 /* Styles for Extra Small devices */
 @media (max-width: 576px) {
-  /* Add your CSS rules here */
+  .global_padding {
+    padding: 10px 10px;
+  }
+  .global_padding_x {
+    padding: 0px 10px;
+  }
+  .global_padding_y {
+    padding: 0px 10px;
+  }
 }
 
 /* Styles for Small devices */

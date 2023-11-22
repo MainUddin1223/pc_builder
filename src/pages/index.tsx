@@ -12,7 +12,6 @@ import { GiPowerGenerator, GiProcessor } from 'react-icons/gi';
 import { MdMonitor } from 'react-icons/md';
 import banner from '../assets/banner.jpg';
 import drem_pc from '../assets/dream.jpg';
-import Hero from '../components/Hero';
 import RootLayout from '../components/Layout/RootLayout';
 import styles from '../styles/Home.module.css';
 import { Details, PcComponents } from '../types/types';
@@ -32,7 +31,7 @@ const Home = ({ components }: PcComponents) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       {/* Your page content goes here */}
-      <Hero />
+      {/* <Hero /> */}
       {/* brands */}
       <Brands />
       {/* featured section */}
