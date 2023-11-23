@@ -1,5 +1,6 @@
 .featured_section {
   width: 250px;
+  background-color: white;
 }
 .product_details {
   padding-left: 10px;
@@ -8,7 +9,7 @@
   padding: 3px 0;
   font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
 }
-.avarage_rating {
+.average_rating {
   padding-top: 5px;
 }
 .addToWishList {
@@ -35,7 +36,7 @@
 }
 .product_btn_group button {
   padding: 5px 10px;
-  background-color: var(--secondary-color);
+  background-color: var(--primary-color);
   color: white;
   font-weight: bold;
   cursor: pointer;

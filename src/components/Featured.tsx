@@ -34,14 +34,14 @@ const Featured = ({component}:PcComponent) => {
                         <p>{component?.productName}</p>
                         <p >Price : $ {component?.price}</p>
                         <p>{component?.status}</p>
-                        <div className={styles.avarage_rating}>
+                        <div className={styles.average_rating}>
                             {Array(Math.ceil(component?.averageRating))
                                 .fill(null)
                                 .map((_, index) => (
                                     component?.averageRating > index + 1 ? (
-                                        <ImStarFull key={index} style={{ color: 'rgb(13, 202, 231)' }} />
+                                        <ImStarFull key={index} style={{ color: 'var(--primary-color)' }} />
                                     ) : (
-                                        <ImStarHalf key={index} style={{ color: 'rgb(13, 202, 231)' }} />
+                                            <ImStarHalf key={index} style={{ color: 'var(--primary-color)' }} />
                                     )
                                 ))}
                         </div>
