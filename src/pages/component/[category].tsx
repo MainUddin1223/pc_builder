@@ -58,14 +58,6 @@ export const getStaticPaths = async () => {
 };
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
-  //  if (typeof window === 'undefined') {
-  //    return {
-  //   props: {
-  //     components:[],
-  //   },
-  //   revalidate: 30,
-  // };
-  // }
   const category = context.params?.category;
   const res = await fetch(`${rootUrl}/components/category/${category}`);
   const data = await res.json();

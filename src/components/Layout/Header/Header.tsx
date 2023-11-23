@@ -1,5 +1,4 @@
 import { useAppSelector } from '@/redux/hooks';
-import styles from '@/styles/Header.module.css';
 import { useSession } from "next-auth/react";
 import Link from 'next/link';
 import { useRouter } from 'next/router';
@@ -7,11 +6,14 @@ import { useState } from 'react';
 import { BsFillBox2HeartFill } from 'react-icons/bs';
 import { CgProfile } from 'react-icons/cg';
 import { FaCartArrowDown } from 'react-icons/fa';
+import styles from './Header.module.css';
+
 
 interface IHeaderProps {
     isDropdown: boolean;
     setIsDropdown: React.Dispatch<React.SetStateAction<boolean>>;
 }
+
 
 const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
     const { count,wishlist } = useAppSelector(state => state.cartComponents);

@@ -1,4 +1,4 @@
-import styles from '@/styles/RootLayout.module.css';
+import styles from '../RootLayout.module.css';
 const Footer = () => {
     return (
         <div className={styles.footer_section}>

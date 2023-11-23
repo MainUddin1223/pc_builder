@@ -1,18 +1,12 @@
-import Loading from "@/components/loading";
 import { Props } from "@/types/types";
-import { useSession } from "next-auth/react";
-import { useRouter } from 'next/router';
 import { Suspense, useEffect, useState } from 'react';
-import { useAppSelector } from '../../redux/hooks';
-import Footer from "./Footer";
-import Header from "./Header";
+import Loading from "../loading";
+import Footer from "./Footer/Footer";
+import Header from "./Header/Header";
 
 
 const RootLayout = ({ children }: Props) => {
 
-  const { count } = useAppSelector(state => state.cartComponents)
-  const router = useRouter()
-  const { data: session } = useSession();
   const [isDropdown, setIsDropdown] = useState(false);
 
   useEffect(() => {
