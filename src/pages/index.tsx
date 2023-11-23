@@ -38,18 +38,13 @@ const Home = ({ components }: PcComponents) => {
         </div>
         {/* content */}
         <div className={`custom-scrollbar-hide ${styles.content}`}>
-          <div className={styles.featured_heading_section}>
-            <div style={{ display: 'flex', justifyContent: 'space-between', cursor: 'pointer' }}>
-              <h5 className={styles.featured_heading}>Featured </h5>
-              <h5 style={{ marginRight: '5px' }}>Browse all products </h5>
-            </div>
-            <hr className={styles.featured_hr} />
-          </div>
+          
           <div className={styles.cards_container}>
             {components.map((component: Details) => (
               <Featured component={component} key={component._id} />
             ))}
           </div>
+
           <button className={styles.see_more_btn} onClick={() => router.push('/pc_builder')}>See more</button>
           <div style={{ margin: "10px 0" }} >
             <Image src={banner} alt="banner" layout="responsive" />

@@ -24,7 +24,7 @@ button {
   padding: 0px 20px;
 }
 .global_padding_y {
-  padding: 0px 20px;
+  padding: 20px 0;
 }
 .custom-scrollbar-hide::-webkit-scrollbar {
   width: 0;

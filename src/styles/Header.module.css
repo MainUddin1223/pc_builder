@@ -2,8 +2,6 @@
   text-transform: uppercase;
   text-decoration: none;
   background-color: var(--primary-color);
-  /* position: sticky;
-  top: 0; */
   transition: transform 150ms ease-in-out;
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   z-index: 999;
@@ -15,10 +13,12 @@
   cursor: pointer;
 }
 
-.nav_container_new {
+.nav_container {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
 }
 .nav_icon_container {
   display: flex;

@@ -8,7 +8,8 @@ import { FaHeartCircleMinus, FaHeartCirclePlus } from 'react-icons/fa6';
 import { ImStarFull, ImStarHalf } from 'react-icons/im';
 import styles from '../styles/Featured.module.css';
 
-const Featured = ({component}:PcComponent) => {
+const Featured = ({ component }: PcComponent) => {
+    
     const router = useRouter()
     const dispatch = useAppDispatch();
     const { cartComponents } = useAppSelector(state => state.cartComponents);
@@ -27,11 +28,12 @@ const Featured = ({component}:PcComponent) => {
                 wishlist?.includes(component._id) ? <FaHeartCircleMinus className={styles.addToWishList} onClick={() => dispatch(removeFromWishlist(component._id))} style={{ color: 'red' }} /> : <FaHeartCirclePlus className={styles.addToWishList} onClick={() => dispatch(addToWishlist(component._id))} />
             }
             <div className={styles.card_container}>
-                <Image className={styles.featured_image} src={component?.image} width={100} height={100} alt={component?.image} layout="responsive" />
-                <hr  style={{margin:"10px",color:"gray"}}/>
+                <div className={styles.featured_image}>
+                <Image  src={component?.image} width={100} height={100} alt={component?.image} layout="responsive" />
+                </div>
                 <div className={styles.product_info}>
                     <div className={styles.product_details}>
-                        <p>{component?.productName}</p>
+                        <h3>{component?.productName}</h3>
                         <p >Price : $ {component?.price}</p>
                         <p>{component?.status}</p>
                         <div className={styles.average_rating}>

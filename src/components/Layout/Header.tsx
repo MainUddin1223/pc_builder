@@ -21,8 +21,8 @@ const Header = ({ isDropdown, setIsDropdown }: IHeaderProps) => {
 
     return (
         <nav className={`${styles.nav_section} ${styles.navClassList}`}>
-            <div className={ `global_padding ${styles.nav_container_new}`}>
-                <h1 className={styles.logo_text} onClick={() => router.push('/')}>SunLink</h1>
+            <div className={ `global_padding_y ${styles.nav_container}`}>
+                <h1 className={styles.logo_text} onClick={() => router.push('/')}>Sun-tech</h1>
                 <div className={styles.nav_icon_container}>
                     <div className={styles.cart_icon}>
                         <Link href='/pc_builder'>
